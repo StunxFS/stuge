@@ -3,15 +3,22 @@
 
 #include "raylib.h"
 
-#include "game.h"
-#include "main_menu.h"
+#define RAYGUI_IMPLEMENTATION
+#include "gui/raygui.h"
+#undef RAYGUI_IMPLEMENTATION
 
-Game gGame;
+#include "gui/styles/cyber/cyber.h"
+
+#include "game.h"
+
+#include "main_menu.h"
+#include "options_menu.h"
 
 int main(void) {
     InitWindow(870, 580, "Stuge - StunxFS's game engine");
     SetExitKey(KEY_NULL);
 
+    GuiLoadStyleCyber();
     gGame = (Game){
         .frames = 0,
         .state = 0
@@ -24,14 +31,20 @@ int main(void) {
         gGame.win_scale = GetWindowScaleDPI();
         switch (gGame.state) {
             case GS_COPYRIGHT: {
-                if (gGame.frames > 120) {
-                    // 2 seconds (120f) later we go to the main menu
+                if (gGame.frames > 60) {
+                    // 1 second (60f) later we go to the main menu
                     gGame.state = GS_MAIN_MENU;
                 }
             }; break;
             case GS_MAIN_MENU: {
                 MainMenu_Update();
-            } break;
+            }; break;
+            case GS_OPTIONS_MENU: {
+                OptionsMenu_Update();
+            }; break;
+            case GS_EXIT: {
+                goto EXIT_GAME;
+            }; break;
         }
         // --------------------------------------
 
@@ -45,10 +58,14 @@ int main(void) {
             case GS_MAIN_MENU: {
                 MainMenu_Draw();
             }; break;
+            case GS_OPTIONS_MENU: {
+                OptionsMenu_Draw();
+            }; break;
         }
         EndDrawing();
         // --------------------------------------
     }
+EXIT_GAME:
 
     CloseWindow();
     return 0;

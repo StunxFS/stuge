@@ -6,8 +6,7 @@ engine (for GTA-style games) developed in C, using
 
 ## Credits
 
-* [raylib](https://github.com/raysan5/raylib).
-* [raygui](https://github.com/raysan5/raygui).
+* [raysan5](https://github.com/raysan5) by **raylib** and **raygui**.
 
 * * *
 

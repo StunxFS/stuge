@@ -36,12 +36,15 @@ int main(void) {
                     gGame.state = GS_MAIN_MENU;
                 }
             }; break;
+
             case GS_MAIN_MENU: {
                 MainMenu_Update();
             }; break;
+
             case GS_OPTIONS_MENU: {
                 OptionsMenu_Update();
             }; break;
+
             case GS_EXIT: {
                 goto EXIT_GAME;
             }; break;
@@ -55,9 +58,11 @@ int main(void) {
                 ClearBackground(BLACK);
                 DrawText("(C) 2022 StunxFS. All rights reserved.", 239, 280, 20, LIGHTGRAY);
             }; break;
+
             case GS_MAIN_MENU: {
                 MainMenu_Draw();
             }; break;
+
             case GS_OPTIONS_MENU: {
                 OptionsMenu_Draw();
             }; break;

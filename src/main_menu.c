@@ -15,7 +15,6 @@ void MainMenu_Draw(void) {
     DrawText("Stuge", 30, 30, 40, LIGHTGRAY);
 
     if (GuiButton((Rectangle){30, 440, 200, 33}, "New Game")) {
-        // TODO
     }
 
     if (GuiButton((Rectangle){30, 480, 200, 33}, "Options")) {

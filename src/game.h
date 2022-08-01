@@ -15,9 +15,9 @@ typedef enum {
 
 typedef struct {
     int frames;
+    Vector2 win_scale;
     GameState state;
     GameState prev_state;
-    Vector2 win_scale;
 } Game;
 
 Game gGame;

@@ -16,5 +16,5 @@ int main(void) {
 
     CloseWindow();
 
-    return 0;solo contigo
+    return 0;
 }

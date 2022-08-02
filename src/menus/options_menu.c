@@ -2,9 +2,9 @@
 // governed by an MIT license that can be found in the LICENSE file.
 
 #include "raylib.h"
-#include "gui/raygui.h"
+#include "../raygui/raygui.h"
 
-#include "game.h"
+#include "../game.h"
 
 void OptionsMenu_Update(void) {
     // ...

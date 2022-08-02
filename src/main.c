@@ -4,15 +4,15 @@
 #include "raylib.h"
 
 #define RAYGUI_IMPLEMENTATION
-#include "gui/raygui.h"
+#include "raygui/raygui.h"
 #undef RAYGUI_IMPLEMENTATION
 
-#include "gui/styles/cyber/cyber.h"
+#include "raygui/styles/cyber/cyber.h"
 
 #include "game.h"
 
-#include "main_menu.h"
-#include "options_menu.h"
+#include "menus/main_menu.h"
+#include "menus/options_menu.h"
 
 int main(void) {
     InitWindow(870, 580, "Stuge - StunxFS's game engine");

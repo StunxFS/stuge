@@ -12,9 +12,9 @@ void OptionsMenu_Update(void) {
 
 void OptionsMenu_Draw(void) {
     ClearBackground(BLACK);
-    DrawText("Options", 30, 30, 30, LIGHTGRAY);
+    DrawText(txt("Options"), 30, 30, 30, LIGHTGRAY);
 
-    if (GuiButton((Rectangle){30, 520, 200, 33}, "Back")) {
+    if (GuiButton((Rectangle){30, 520, 200, 33}, txt("Back"))) {
         ChangeToPrevState();
     }
 }

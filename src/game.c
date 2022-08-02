@@ -3,8 +3,8 @@
 
 #include "toml/toml.h"
 
-#include "data/lang_english.h"
-#include "data/lang_spanish.h"
+#include "data/langs_english.h"
+#include "data/langs_spanish.h"
 
 #include "game.h"
 #include "utils.h"
@@ -13,11 +13,11 @@ void LoadLanguage(void) {
     char errbuf[200];
     switch (gGame.lang) {
         case GL_English: {
-            gGame.lang_txt = toml_parse(&LANG_ENGLISH[0], errbuf, sizeof(errbuf));
+            gGame.lang_txt = toml_parse(&LANGS_ENGLISH[0], errbuf, sizeof(errbuf));
         }; break;
 
         case GL_Spanish: {
-            gGame.lang_txt = toml_parse(&LANG_SPANISH[0], errbuf, sizeof(errbuf));
+            gGame.lang_txt = toml_parse(&LANGS_SPANISH[0], errbuf, sizeof(errbuf));
         }; break;
     }
     if (gGame.lang_txt == NULL) {

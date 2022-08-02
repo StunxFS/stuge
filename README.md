@@ -7,6 +7,7 @@ engine (for GTA-style games) developed in C, using
 ## Credits
 
 * [raysan5](https://github.com/raysan5) by **raylib** and **raygui**.
+* [cktan](https://github.com/cktan) by **tomlc99**.
 
 * * *
 

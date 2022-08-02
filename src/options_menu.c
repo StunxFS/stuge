@@ -7,6 +7,7 @@
 #include "game.h"
 
 void OptionsMenu_Update(void) {
+    // ...
 }
 
 void OptionsMenu_Draw(void) {

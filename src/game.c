@@ -1,7 +1,40 @@
 // (C) 2022 StunxFS. All rights reserved. Use of this source code is
 // governed by an MIT license that can be found in the LICENSE file.
 
+#include "toml/toml.h"
+
+#include "data/assets_lang_english.h"
+#include "data/assets_lang_spanish.h"
+
 #include "game.h"
+#include "utils.h"
+
+void LoadLanguage(void) {
+    char errbuf[200];
+    switch (gGame.lang) {
+        case GL_English: {
+            gGame.lang_txt = toml_parse(&ASSETS_LANG_ENGLISH[0], errbuf, sizeof(errbuf));
+        }; break;
+
+        case GL_Spanish: {
+            gGame.lang_txt = toml_parse(&ASSETS_LANG_SPANISH[0], errbuf, sizeof(errbuf));
+        }; break;
+    }
+    if (gGame.lang_txt == NULL) {
+        RuntimeError(TextFormat("cannot parse language file: %s", &errbuf[0]));
+    }
+}
+
+const char* txt(const char* key) {
+    if (toml_key_exists(gGame.lang_txt, key)) {
+        toml_datum_t res = toml_string_in(gGame.lang_txt, key);
+        if (res.ok) {
+            return res.u.s;
+        }
+        return "<invalid-lang-key-value>";
+    }
+    return "<lang-key-not-found>";
+}
 
 void ChangeState(GameState new_state) {
     gGame.prev_state = gGame.state;
@@ -10,4 +43,8 @@ void ChangeState(GameState new_state) {
 
 void ChangeToPrevState(void) {
     ChangeState(gGame.prev_state);
+}
+
+void Cleanup(void) {
+    toml_free(gGame.lang_txt);
 }

@@ -18,11 +18,13 @@ int main(void) {
     InitWindow(870, 580, "Stuge - StunxFS's game engine");
     SetExitKey(KEY_NULL);
 
-    GuiLoadStyleCyber();
     gGame = (Game){
         .frames = 0,
-        .state = 0
+        .state = 0,
+        .lang = 0
     };
+    LoadLanguage();
+    GuiLoadStyleCyber();
 
     SetTargetFPS(60);
     while (!WindowShouldClose()) {
@@ -71,7 +73,7 @@ int main(void) {
         // --------------------------------------
     }
 EXIT_GAME:
-
+    Cleanup();
     CloseWindow();
     return 0;
 }

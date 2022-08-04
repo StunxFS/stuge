@@ -27,7 +27,9 @@ int main(void) {
         .lang = 0,
         .lua_state = NewLuaState()
     };
+
     LoadLanguage();
+    UpdateAPIConsts();
     GuiLoadStyleCyber();
 
     SetTargetFPS(60);

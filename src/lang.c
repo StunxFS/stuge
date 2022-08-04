@@ -44,8 +44,8 @@ void LoadLanguage(void) {
 
 char* GL2String(GameLanguage gl) {
     switch (gl) {
-        GL_English: return "ENGLISH";
-        GL_Spanish: return "SPANISH";
+        case GL_English: return "ENGLISH";
+        case GL_Spanish: return "SPANISH";
     }
     return "unknown language";
 }

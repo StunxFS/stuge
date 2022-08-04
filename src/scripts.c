@@ -17,7 +17,6 @@ lua_State* NewLuaState(void) {
     }
     luaL_openlibs(l);
     APILoadLibs(l);
-
     return l;
 }
 

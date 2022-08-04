@@ -5,6 +5,7 @@
 #include "../raygui/raygui.h"
 
 #include "../game.h"
+#include "../lang.h"
 
 void MainMenu_Update(void) {
     // ...

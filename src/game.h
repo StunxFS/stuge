@@ -38,9 +38,6 @@ typedef struct {
 
 Game gGame;
 
-void LoadLanguage(void);
-const char* _(const char* key);
-
 void ChangeState(GameState new_state);
 void ChangeToPrevState(void);
 

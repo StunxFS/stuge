@@ -10,6 +10,7 @@
 #include "raygui/styles/cyber/cyber.h"
 
 #include "game.h"
+#include "lang.h"
 
 #include "menus/main_menu.h"
 #include "menus/options_menu.h"

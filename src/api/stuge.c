@@ -10,7 +10,7 @@ static const luaL_Reg lib[] = {
     { NULL, NULL }
 };
 
-int luaopen_Stuge(lua_State *L) {
+int luaopen_stuge(lua_State *L) {
     luaL_newlib(L, lib);
     return 1;
 }

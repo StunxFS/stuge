@@ -7,7 +7,7 @@
 
 #include "api/api.h"
 #include "game.h"
-#include "scripts.h"
+#include "script.h"
 #include "utils.h"
 
 lua_State* NewLuaState(void) {
@@ -15,7 +15,6 @@ lua_State* NewLuaState(void) {
     if (l == NULL) {
         RuntimeError("cannot create lua state: not enough memory");
     }
-    luaL_openlibs(l);
     APILoadLibs(l);
     return l;
 }

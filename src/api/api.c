@@ -5,14 +5,16 @@
 
 #include "api.h"
 
-int luaopen_Stuge(lua_State *L);
+int luaopen_log(lua_State* L);
+int luaopen_stuge(lua_State* L);
 
 static const luaL_Reg libs[] = {
-    { "stuge", luaopen_Stuge },
+    { "log", luaopen_log },
+    { "stuge", luaopen_stuge },
     { NULL, NULL }
 };
 
-void APILoadLibs(lua_State *L) {
+void APILoadLibs(lua_State* L) {
     for (int i = 0; libs[i].name; i++) {
         luaL_requiref(L, libs[i].name, libs[i].func, 1);
     }

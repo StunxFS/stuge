@@ -12,7 +12,7 @@
 #include "game.h"
 #include "lang.h"
 #include "map.h"
-#include "scripts.h"
+#include "script.h"
 
 #include "menus/main_menu.h"
 #include "menus/options_menu.h"

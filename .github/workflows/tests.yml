@@ -16,7 +16,7 @@ jobs:
 
       - name: Build raylib
         run: |
-          sudo apt install lua5.3 libglfw3-dev libglfw3 libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+          sudo apt install liblua5.3-dev libglfw3-dev libglfw3 libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
           git clone --depth 1 https://github.com/raysan5/raylib
           cd raylib/src
           make PLATFORM=PLATFORM_DESKTOP

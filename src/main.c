@@ -30,7 +30,10 @@ int main(void) {
     while (!WindowShouldClose()) {
         // --------------= update =--------------
         gGame.frames++;
-        gGame.win_scale = GetWindowScaleDPI();
+        gGame.win_size = (WindowSize){
+            .width = GetScreenWidth(),
+            .height = GetScreenHeight()
+        };
         switch (gGame.state) {
             case GS_COPYRIGHT: {
                 if (gGame.frames > 60) {

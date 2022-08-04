@@ -14,14 +14,14 @@ void MainMenu_Draw(void) {
     ClearBackground(BLACK);
     DrawText("Stuge", 30, 30, 40, LIGHTGRAY);
 
-    if (GuiButton((Rectangle){30, 440, 200, 33}, txt("NewGame"))) {
+    if (GuiButton((Rectangle){30, gGame.win_size.height - 140, 200, 33}, _("NewGame"))) {
     }
 
-    if (GuiButton((Rectangle){30, 480, 200, 33}, txt("Options"))) {
+    if (GuiButton((Rectangle){30, gGame.win_size.height - 100, 200, 33}, _("Options"))) {
         ChangeState(GS_OPTIONS_MENU);
     }
 
-    if (GuiButton((Rectangle){30, 520, 200, 33}, txt("Exit"))) {
+    if (GuiButton((Rectangle){30, gGame.win_size.height - 60, 200, 33}, _("Exit"))) {
         gGame.state = GS_EXIT; // exit
     }
 }

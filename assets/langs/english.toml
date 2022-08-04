@@ -3,3 +3,5 @@ Options = "Options"
 Exit = "Exit"
 
 Back = "Back"
+
+ChangeLang = "Change the game language: "

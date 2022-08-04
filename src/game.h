@@ -20,18 +20,26 @@ typedef enum {
 } GameLanguage;
 
 typedef struct {
+    int width;
+    int height;
+} WindowSize;
+
+typedef struct {
     int frames;
-    Vector2 win_scale;
+    WindowSize win_size;
+
     GameState state;
     GameState prev_state;
+
     GameLanguage lang;
     toml_table_t* lang_txt;
+    bool changed_language;
 } Game;
 
 Game gGame;
 
 void LoadLanguage(void);
-const char* txt(const char* key);
+const char* _(const char* key);
 
 void ChangeState(GameState new_state);
 void ChangeToPrevState(void);

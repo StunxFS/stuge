@@ -25,13 +25,13 @@ void LoadLanguage(void) {
     }
 }
 
-const char* txt(const char* key) {
+const char* _(const char* key) {
     if (toml_key_exists(gGame.lang_txt, key)) {
         toml_datum_t res = toml_string_in(gGame.lang_txt, key);
         if (res.ok) {
             return res.u.s;
         }
-        return "<invalid-lang-key-value>";
+        return "<lang-key-with-null-value>";
     }
     return "<lang-key-not-found>";
 }
@@ -46,5 +46,7 @@ void ChangeToPrevState(void) {
 }
 
 void Cleanup(void) {
-    toml_free(gGame.lang_txt);
+    if (gGame.lang_txt != NULL) {
+        toml_free(gGame.lang_txt);
+    }
 }

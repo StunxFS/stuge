@@ -1,0 +1,28 @@
+name: Tests
+
+on:
+  push:
+    paths: ['assets/**/*.*', 'src/**.c', 'src/**.h', 'tools/**.py']
+    branches: [main]
+  pull_request:
+    paths: ['assets/**/*.*', 'src/**.c', 'src/**.h', 'tools/**.py']
+    types: [opened, synchronize]
+
+jobs:
+  ubuntu-gcc:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build raylib
+        run: |
+          sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+          git clone --depth 1 https://github.com/raysan5/raylib
+          cd raylib/src
+          make PLATFORM=PLATFORM_DESKTOP
+          sudo make install
+
+      - name: Build Stuge
+        run: |
+          cd ../..
+          make

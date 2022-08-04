@@ -4,10 +4,27 @@
 #include "toml/toml.h"
 
 #include "game.h"
+#include "lang.h"
 #include "utils.h"
 
 #include "data/langs_english.h"
 #include "data/langs_spanish.h"
+
+const char* LANGUAGE_OPTIONS[LANGUAGE_OPTIONS_SIZE] = {
+    "English",
+    "Spanish"
+};
+
+const char* _(const char* key) {
+    if (toml_key_exists(gGame.lang_txt, key)) {
+        toml_datum_t res = toml_string_in(gGame.lang_txt, key);
+        if (res.ok) {
+            return res.u.s;
+        }
+        return "<lang-key-with-null-value>";
+    }
+    return "<lang-key-not-found>";
+}
 
 void LoadLanguage(void) {
     char errbuf[200];
@@ -23,15 +40,4 @@ void LoadLanguage(void) {
     if (gGame.lang_txt == NULL) {
         RuntimeError(TextFormat("cannot parse language file: %s", &errbuf[0]));
     }
-}
-
-const char* _(const char* key) {
-    if (toml_key_exists(gGame.lang_txt, key)) {
-        toml_datum_t res = toml_string_in(gGame.lang_txt, key);
-        if (res.ok) {
-            return res.u.s;
-        }
-        return "<lang-key-with-null-value>";
-    }
-    return "<lang-key-not-found>";
 }

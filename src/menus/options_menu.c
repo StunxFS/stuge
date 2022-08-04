@@ -7,12 +7,6 @@
 #include "../game.h"
 #include "../lang.h"
 
-#define LANGUAGE_OPTIONS_SIZE 2
-const char* LANGUAGE_OPTIONS[LANGUAGE_OPTIONS_SIZE] = {
-    "English",
-    "Spanish"
-};
-
 void OptionsMenu_Update(void) {
     if (gGame.changed_language) {
         LoadLanguage();

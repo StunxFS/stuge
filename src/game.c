@@ -16,4 +16,7 @@ void Cleanup(void) {
     if (gGame.lang_txt != NULL) {
         toml_free(gGame.lang_txt);
     }
+    if (gGame.lua_state != NULL) {
+        lua_close(gGame.lua_state);
+    }
 }

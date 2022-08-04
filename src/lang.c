@@ -41,3 +41,11 @@ void LoadLanguage(void) {
         RuntimeError(TextFormat("cannot parse language file: %s", &errbuf[0]));
     }
 }
+
+char* GL2String(GameLanguage gl) {
+    switch (gl) {
+        GL_English: return "ENGLISH";
+        GL_Spanish: return "SPANISH";
+    }
+    return "unknown language";
+}

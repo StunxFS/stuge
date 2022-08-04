@@ -1,7 +1,7 @@
 // (C) 2022 StunxFS. All rights reserved. Use of this source code is
 // governed by an MIT license that can be found in the LICENSE file.
 
-#include "raylib.h"
+#include <raylib.h>
 
 #define RAYGUI_IMPLEMENTATION
 #include "raygui/raygui.h"
@@ -12,6 +12,7 @@
 #include "game.h"
 #include "lang.h"
 #include "map.h"
+#include "scripts.h"
 
 #include "menus/main_menu.h"
 #include "menus/options_menu.h"
@@ -23,7 +24,8 @@ int main(void) {
     gGame = (Game){
         .frames = 0,
         .state = 0,
-        .lang = 0
+        .lang = 0,
+        .lua_state = NewLuaState()
     };
     LoadLanguage();
     GuiLoadStyleCyber();
@@ -33,6 +35,7 @@ int main(void) {
         // --------------= update =--------------
         gGame.frames++;
         gGame.win_size = (WindowSize){GetScreenWidth(), GetScreenHeight()};
+        UpdateAPIConsts();
         switch (gGame.state) {
             case GS_COPYRIGHT: {
                 if (gGame.frames > 60) {

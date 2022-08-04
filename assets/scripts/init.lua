@@ -1,0 +1,1 @@
+-- print(GAME_LANG)

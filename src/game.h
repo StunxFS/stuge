@@ -4,13 +4,12 @@
 #ifndef STUGE_GAME_H
 #define STUGE_GAME_H
 
-#include "raylib.h"
+#include <lua.h>
+#include <raylib.h>
+
 #include "toml/toml.h"
 
-typedef enum {
-    GL_English,
-    GL_Spanish
-} GameLanguage;
+#include "lang.h"
 
 typedef enum {
     GS_COPYRIGHT,
@@ -33,6 +32,8 @@ typedef struct {
     GameLanguage lang;
     toml_table_t* lang_txt;
     bool changed_language;
+
+    lua_State* lua_state;
 
     GameState state;
     GameState prev_state;

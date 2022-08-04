@@ -4,10 +4,17 @@
 #ifndef STUGE_LANG_H
 #define STUGE_LANG_H
 
+typedef enum {
+    GL_English = 0,
+    GL_Spanish
+} GameLanguage;
+
 #define LANGUAGE_OPTIONS_SIZE 2
 const char* LANGUAGE_OPTIONS[LANGUAGE_OPTIONS_SIZE];
 
 void LoadLanguage(void);
 const char* _(const char* key);
+
+char* GL2String(GameLanguage gl);
 
 #endif // STUGE_LANG_H

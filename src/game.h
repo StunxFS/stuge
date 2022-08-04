@@ -8,16 +8,18 @@
 #include "toml/toml.h"
 
 typedef enum {
+    GL_English,
+    GL_Spanish
+} GameLanguage;
+
+typedef enum {
     GS_COPYRIGHT,
     GS_MAIN_MENU,
     GS_OPTIONS_MENU,
+    GS_INGAME,
+    GS_PAUSED,
     GS_EXIT
 } GameState;
-
-typedef enum {
-    GL_English = 0,
-    GL_Spanish
-} GameLanguage;
 
 typedef struct {
     int width;
@@ -28,12 +30,12 @@ typedef struct {
     int frames;
     WindowSize win_size;
 
-    GameState state;
-    GameState prev_state;
-
     GameLanguage lang;
     toml_table_t* lang_txt;
     bool changed_language;
+
+    GameState state;
+    GameState prev_state;
 } Game;
 
 Game gGame;

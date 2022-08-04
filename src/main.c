@@ -11,6 +11,7 @@
 
 #include "game.h"
 #include "lang.h"
+#include "map.h"
 
 #include "menus/main_menu.h"
 #include "menus/options_menu.h"
@@ -48,6 +49,13 @@ int main(void) {
                 OptionsMenu_Update();
             }; break;
 
+            case GS_INGAME: {
+                Map_Update();
+            }; break;
+
+            case GS_PAUSED: {
+            }; break;
+
             case GS_EXIT: {
                 goto EXIT_GAME;
             }; break;
@@ -59,7 +67,10 @@ int main(void) {
         switch (gGame.state) {
             case GS_COPYRIGHT: {
                 ClearBackground(BLACK);
-                DrawText("(C) 2022 StunxFS. All rights reserved.", 239, 280, 20, LIGHTGRAY);
+                DrawText(
+                    "(C) 2022 StunxFS. All rights reserved.", gGame.win_size.height - 329,
+                    gGame.win_size.height - 290, 20, LIGHTGRAY
+                );
             }; break;
 
             case GS_MAIN_MENU: {
@@ -68,6 +79,13 @@ int main(void) {
 
             case GS_OPTIONS_MENU: {
                 OptionsMenu_Draw();
+            }; break;
+
+            case GS_INGAME: {
+                Map_Draw();
+            }; break;
+
+            case GS_PAUSED: {
             }; break;
         }
         EndDrawing();

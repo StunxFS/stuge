@@ -18,10 +18,10 @@ void OptionsMenu_Draw(void) {
     ClearBackground(BLACK);
     DrawText(_("Options"), 30, 30, 30, LIGHTGRAY);
 
-    const char* change_lang = _("ChangeLang");
-    GuiLabel((Rectangle){30, 120, 200, 33}, change_lang);
+    const char* game_lang = _("GameLang");
+    GuiLabel((Rectangle){30, 120, 200, 33}, game_lang);
     gGame.changed_language = GuiDropdownBox(
-        (Rectangle){TextLength(change_lang) + 170, 120, 200, 33},
+        (Rectangle){TextLength(game_lang) + 170, 120, 200, 33},
         TextJoin(LANGUAGE_OPTIONS, LANGUAGE_OPTIONS_SIZE, ";"),
         (int*)&gGame.lang, true
     );

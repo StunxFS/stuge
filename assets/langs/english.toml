@@ -4,4 +4,4 @@ Exit = "Exit"
 
 Back = "Back"
 
-ChangeLang = "Change the game language: "
+GameLang = "Game language: "

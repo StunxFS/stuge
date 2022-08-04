@@ -16,6 +16,7 @@ void MainMenu_Draw(void) {
     DrawText("Stuge", 30, 30, 40, LIGHTGRAY);
 
     if (GuiButton((Rectangle){30, gGame.win_size.height - 140, 200, 33}, _("NewGame"))) {
+        gGame.state = GS_INGAME;
     }
 
     if (GuiButton((Rectangle){30, gGame.win_size.height - 100, 200, 33}, _("Options"))) {

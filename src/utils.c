@@ -8,8 +8,8 @@
 
 void RuntimeError(const char* msg) {
     if (gGame.state == GS_INGAME) {
-        gGame.error = msg;
         gGame.state = GS_RUNTIME_ERROR;
+        gGame.error = msg;
     } else {
         fprintf(stderr, "[Stuge - RuntimeError] %s\n", msg);
         Cleanup();

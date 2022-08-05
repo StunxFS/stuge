@@ -68,7 +68,7 @@ void LoadMap(size_t idx) {
 }
 
 void Map_Update(void) {
-    if (!gGame.map->script_executed) {
+    if (!gGame.map->script_executed && gGame.map->script_idx > -1) {
         RunScript(gGame.map->script_idx);
         gGame.map->script_executed = true;
     }

@@ -9,6 +9,8 @@
 typedef struct {
     char* buf;
     size_t size;
+    int script_idx;
+    bool script_executed;
     tmx_map* tmx_map;
 } Map;
 

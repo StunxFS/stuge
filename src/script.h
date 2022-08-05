@@ -6,11 +6,9 @@
 
 #include <lua.h>
 
-#include "data/scripts_basic.h"
-
 lua_State* NewLuaState(void);
 void UpdateAPIConsts(void);
 
-void RunScript(char* sc);
+void RunScript(int idx);
 
 #endif // STUGE_SCRIPTS_H

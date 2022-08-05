@@ -13,6 +13,7 @@
 #include "game.h"
 #include "image.h"
 #include "map.h"
+#include "script.h"
 #include "utils.h"
 
 #include "tileset_table.h"
@@ -67,6 +68,10 @@ void LoadMap(size_t idx) {
 }
 
 void Map_Update(void) {
+    if (!gGame.map->script_executed) {
+        RunScript(gGame.map->script_idx);
+        gGame.map->script_executed = true;
+    }
 }
 
 void Map_Draw(void) {

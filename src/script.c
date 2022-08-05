@@ -10,6 +10,8 @@
 #include "script.h"
 #include "utils.h"
 
+#include "script_table.h"
+
 lua_State* NewLuaState(void) {
     lua_State* l = luaL_newstate();
     if (l == NULL) {
@@ -24,8 +26,17 @@ void UpdateAPIConsts(void) {
     lua_setglobal(gGame.lua_state, "GAME_LANG");
 }
 
-void RunScript(char* sc) {
-    if (luaL_dostring(gGame.lua_state, sc) != LUA_OK) {
-        //
+void LuaReport(lua_State* L, int status) {
+    if (status != LUA_OK) {
+        const char* msg = lua_tostring(L, -1);
+        luaL_traceback(L, L, msg, -1);
+        RuntimeError(lua_tostring(L, -1));
     }
+}
+
+void RunScript(int idx) {
+    if (idx < 0 || idx >= ARR_LEN(SCRIPT_TABLE)) {
+        RuntimeError(TextFormat("cannot run script %d (index out of range)", idx));
+    }
+    LuaReport(gGame.lua_state, luaL_dostring(gGame.lua_state, SCRIPT_TABLE[idx].buf));
 }

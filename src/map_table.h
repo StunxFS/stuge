@@ -9,7 +9,7 @@
 #include "data/maps_basic.h"
 
 static Map MAP_TABLE[] = {
-    { MAPS_BASIC, MAPS_BASIC_SIZE }
+    { MAPS_BASIC, MAPS_BASIC_SIZE, 0 }
 };
 
 #endif // STUGE_MAP_TABLE_H

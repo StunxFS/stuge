@@ -16,11 +16,12 @@
 #include "map.h"
 
 typedef enum {
+    GS_INTERNAL,
+    GS_RUNTIME_ERROR,
     GS_COPYRIGHT,
     GS_MAIN_MENU,
     GS_OPTIONS_MENU,
     GS_INGAME,
-    GS_PAUSED,
     GS_EXIT
 } GameState;
 
@@ -31,7 +32,10 @@ typedef struct {
 
 typedef struct {
     int frames;
+    bool paused;
     WindowSize win_size;
+
+    const char* error;
 
     GameLanguage lang;
     toml_table_t* lang_txt;

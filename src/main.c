@@ -37,6 +37,7 @@ int main(void) {
     };
 
     GuiLoadStyleCyber();
+
     LoadLanguage();
     LoadImages();
     LoadTilesets();
@@ -44,6 +45,7 @@ int main(void) {
 
     LoadMap(0);
 
+    gGame.state = GS_COPYRIGHT;
     while (!WindowShouldClose()) {
         // --------------= update =--------------
         gGame.frames++;
@@ -66,11 +68,10 @@ int main(void) {
             }; break;
 
             case GS_INGAME: {
-                Map_Update();
-                HUD_Update();
-            }; break;
-
-            case GS_PAUSED: {
+                if (!gGame.paused) {
+                    Map_Update();
+                    HUD_Update();
+                }
             }; break;
 
             case GS_EXIT: {
@@ -82,6 +83,12 @@ int main(void) {
         // ---------------= draw =---------------
         BeginDrawing();
         switch (gGame.state) {
+            case GS_RUNTIME_ERROR: {
+                ClearBackground(BLACK);
+                DrawText("Runtime Error", 30, 30, 35, LIGHTGRAY);
+                DrawText(gGame.error, 30, 75, 20, LIGHTGRAY);
+            }; break;
+
             case GS_COPYRIGHT: {
                 ClearBackground(BLACK);
                 DrawText(
@@ -99,11 +106,10 @@ int main(void) {
             }; break;
 
             case GS_INGAME: {
-                Map_Draw();
-                HUD_Draw();
-            }; break;
-
-            case GS_PAUSED: {
+                if (!gGame.paused) {
+                    Map_Draw();
+                    HUD_Draw();
+                }
             }; break;
         }
         EndDrawing();

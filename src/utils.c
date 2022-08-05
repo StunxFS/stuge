@@ -7,7 +7,12 @@
 #include "game.h"
 
 void RuntimeError(const char* msg) {
-    fprintf(stderr, "[Stuge - RuntimeError] %s\n", msg);
-    Cleanup();
-    exit(1);
+    if (gGame.state == GS_INGAME) {
+        gGame.error = msg;
+        gGame.state = GS_RUNTIME_ERROR;
+    } else {
+        fprintf(stderr, "[Stuge - RuntimeError] %s\n", msg);
+        Cleanup();
+        exit(1);
+    }
 }

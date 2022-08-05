@@ -4,12 +4,16 @@
 #ifndef STUGE_GAME_H
 #define STUGE_GAME_H
 
+#include <stdint.h>
+
 #include <lua.h>
 #include <raylib.h>
 
 #include "toml/toml.h"
+#include "tmx/tmx.h"
 
 #include "lang.h"
+#include "map.h"
 
 typedef enum {
     GS_COPYRIGHT,
@@ -37,6 +41,10 @@ typedef struct {
 
     GameState state;
     GameState prev_state;
+
+    size_t map_idx;
+    Map* map;
+    tmx_resource_manager* tmx_resman;
 } Game;
 
 Game gGame;

@@ -10,7 +10,9 @@
 #include "raygui/styles/cyber/cyber.h"
 
 #include "game.h"
+#include "hud.h"
 #include "lang.h"
+#include "image.h"
 #include "map.h"
 #include "script.h"
 
@@ -20,19 +22,28 @@
 int main(void) {
     InitWindow(870, 580, "Stuge - StunxFS's game engine");
     SetExitKey(KEY_NULL);
+    SetTargetFPS(60);
+
+    tmx_img_load_func = TMX_TextureLoader;
+    tmx_img_free_func = TMX_FreeTexture;
 
     gGame = (Game){
         .frames = 0,
         .state = 0,
         .lang = 0,
-        .lua_state = NewLuaState()
+        .map_idx = -1,
+        .lua_state = NewLuaState(),
+        .tmx_resman = tmx_make_resource_manager()
     };
 
-    LoadLanguage();
-    UpdateAPIConsts();
     GuiLoadStyleCyber();
+    LoadLanguage();
+    LoadImages();
+    LoadTilesets();
+    UpdateAPIConsts();
 
-    SetTargetFPS(60);
+    LoadMap(0);
+
     while (!WindowShouldClose()) {
         // --------------= update =--------------
         gGame.frames++;
@@ -56,6 +67,7 @@ int main(void) {
 
             case GS_INGAME: {
                 Map_Update();
+                HUD_Update();
             }; break;
 
             case GS_PAUSED: {
@@ -88,6 +100,7 @@ int main(void) {
 
             case GS_INGAME: {
                 Map_Draw();
+                HUD_Draw();
             }; break;
 
             case GS_PAUSED: {

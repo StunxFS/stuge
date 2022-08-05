@@ -4,6 +4,20 @@
 #ifndef STUGE_MAP_H
 #define STUGE_MAP_H
 
+#include <stdint.h>
+
+typedef struct {
+    char* buf;
+    size_t size;
+    tmx_map* tmx_map;
+} Map;
+
+void* TMX_TextureLoader(const char *path);
+void TMX_FreeTexture(void *ptr);
+
+void LoadTilesets(void);
+void LoadMap(size_t idx);
+
 void Map_Update(void);
 void Map_Draw(void);
 

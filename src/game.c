@@ -19,4 +19,10 @@ void Cleanup(void) {
     if (gGame.lua_state != NULL) {
         lua_close(gGame.lua_state);
     }
+    if (gGame.map != NULL && gGame.map->tmx_map != NULL) {
+        tmx_map_free(gGame.map->tmx_map);
+    }
+    if (gGame.tmx_resman != NULL) {
+        tmx_free_resource_manager(gGame.tmx_resman);
+    }
 }

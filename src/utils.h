@@ -4,6 +4,8 @@
 #ifndef STUGE_UTILS_H
 #define STUGE_UTILS_H
 
+#define ARR_LEN(arr) (sizeof(arr) / sizeof(arr[0]))
+
 void RuntimeError(const char* msg);
 
 #endif // STUGE_UTILS_H

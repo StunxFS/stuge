@@ -1,3 +1,5 @@
 src/data/*
+assets/maps/stuge.tiled-session
+
 stuge
 libraylib.a

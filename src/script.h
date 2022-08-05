@@ -6,7 +6,7 @@
 
 #include <lua.h>
 
-#include "data/scripts_init.h"
+#include "data/scripts_basic.h"
 
 lua_State* NewLuaState(void);
 void UpdateAPIConsts(void);

@@ -16,8 +16,8 @@
 #include "script.h"
 #include "utils.h"
 
-#include "tileset_table.h"
-#include "map_table.h"
+#include "tables/tilesets.h"
+#include "tables/maps.h"
 
 void set_alloc_functions();
 

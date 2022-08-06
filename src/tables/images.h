@@ -8,9 +8,9 @@
 
 #include <raylib.h>
 
-#include "utils.h"
+#include "../utils.h"
 
-#include "data/images_basic.h"
+#include "../data/images_basic.h"
 
 typedef struct {
     char* filename;

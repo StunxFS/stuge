@@ -6,7 +6,7 @@
 
 #include <stdint.h>
 
-#include "data/scripts_basic.h"
+#include "../data/scripts_basic.h"
 
 typedef struct {
     char* buf;

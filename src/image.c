@@ -5,7 +5,7 @@
 
 #include <raylib.h>
 
-#include "image_table.h"
+#include "tables/images.h"
 
 void LoadImages(void) {
     for (size_t i = 0; i < ARR_LEN(IMAGE_TABLE); i++) {

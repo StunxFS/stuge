@@ -4,9 +4,9 @@
 #ifndef STUGE_MAP_TABLE_H
 #define STUGE_MAP_TABLE_H
 
-#include "map.h"
+#include "../map.h"
 
-#include "data/maps_basic.h"
+#include "../data/maps_basic.h"
 
 static Map MAP_TABLE[] = {
     { MAPS_BASIC, MAPS_BASIC_SIZE, 0 }

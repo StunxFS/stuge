@@ -6,7 +6,7 @@
 
 #include <stdint.h>
 
-#include "data/tilesets_basic.h"
+#include "../data/tilesets_basic.h"
 
 typedef struct {
     char* name;

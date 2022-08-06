@@ -10,7 +10,7 @@
 #include "script.h"
 #include "utils.h"
 
-#include "script_table.h"
+#include "tables/scripts.h"
 
 lua_State* NewLuaState(void) {
     lua_State* l = luaL_newstate();

@@ -7,6 +7,10 @@ engine (for GTA-style games) developed in C, using
 The goal of the project is to have a base on which to develop a
 2D top-down game easily.
 
+> **Important note**: Stuge is a project under constant development.
+
+## Structure
+
 Stuge is arranged in a way that makes it easy to know what you
 want to modify:
 

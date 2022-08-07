@@ -41,7 +41,7 @@ int main(void) {
     LoadLanguage();
     LoadImages();
     LoadTilesets();
-    UpdateAPIConsts();
+    UpdateAPIConsts(true);
 
     LoadMap(0);
 
@@ -50,7 +50,7 @@ int main(void) {
         // --------------= update =--------------
         gGame.frames++;
         gGame.win_size = (WindowSize){GetScreenWidth(), GetScreenHeight()};
-        UpdateAPIConsts();
+        UpdateAPIConsts(false);
         switch (gGame.state) {
             case GS_COPYRIGHT: {
                 if (gGame.frames > 60) {

@@ -7,6 +7,7 @@
 #include <stdint.h>
 
 typedef struct {
+    char* name;
     char* buf;
     size_t size;
     int script_idx;

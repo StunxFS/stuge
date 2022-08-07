@@ -7,9 +7,11 @@
 
 #include "api/api.h"
 #include "game.h"
+#include "map.h"
 #include "script.h"
 #include "utils.h"
 
+#include "tables/maps.h"
 #include "tables/scripts.h"
 
 lua_State* NewLuaState(void) {
@@ -17,13 +19,24 @@ lua_State* NewLuaState(void) {
     if (l == NULL) {
         RuntimeError("cannot create lua state: not enough memory");
     }
+    luaopen_table(l);
+    luaopen_string(l);
+    luaopen_math(l);
+    luaopen_utf8(l);
     APILoadLibs(l);
     return l;
 }
 
-void UpdateAPIConsts(void) {
+void UpdateAPIConsts(bool first_time) {
     lua_pushstring(gGame.lua_state, GL2String(gGame.lang));
     lua_setglobal(gGame.lua_state, "GAME_LANG");
+    if (first_time) {
+        for (int i = 0; i < ARR_LEN(MAP_TABLE); i++) {
+            Map* map = &MAP_TABLE[i];
+            lua_pushinteger(gGame.lua_state, i);
+            lua_setglobal(gGame.lua_state, map->name);
+        }
+    }
 }
 
 void LuaReport(lua_State* L, int status) {

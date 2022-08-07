@@ -7,7 +7,7 @@
 #include <lua.h>
 
 lua_State* NewLuaState(void);
-void UpdateAPIConsts(void);
+void UpdateAPIConsts(bool first_time);
 
 void RunScript(int idx);
 

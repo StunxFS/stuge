@@ -6,6 +6,7 @@
 
 #include "../game.h"
 #include "../lang.h"
+#include "../utils.h"
 
 void OptionsMenu_Update(void) {
     if (gGame.changed_language) {
@@ -22,7 +23,7 @@ void OptionsMenu_Draw(void) {
     GuiLabel((Rectangle){30, 120, 200, 33}, game_lang);
     gGame.changed_language = GuiDropdownBox(
         (Rectangle){TextLength(game_lang) + 170, 120, 200, 33},
-        TextJoin(LANGUAGE_OPTIONS, LANGUAGE_OPTIONS_SIZE, ";"),
+        TextJoin(&LANGUAGE_OPTIONS[0], ARR_LEN(LANGUAGE_OPTIONS), ";"),
         (int*)&gGame.lang, true
     );
 

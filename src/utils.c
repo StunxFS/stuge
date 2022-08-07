@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 #include "game.h"
+#include "utils.h"
 
 void RuntimeError(const char* msg) {
     if (gGame.state == GS_INGAME) {

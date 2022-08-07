@@ -77,6 +77,9 @@ int main(void) {
             case GS_EXIT: {
                 goto EXIT_GAME;
             }; break;
+
+            default: {
+            }; break;
         }
         // --------------------------------------
 
@@ -110,6 +113,9 @@ int main(void) {
                     Map_Draw();
                     HUD_Draw();
                 }
+            }; break;
+
+            default: {
             }; break;
         }
         EndDrawing();

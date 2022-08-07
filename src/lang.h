@@ -9,8 +9,10 @@ typedef enum {
     GL_Spanish
 } GameLanguage;
 
-#define LANGUAGE_OPTIONS_SIZE 2
-const char* LANGUAGE_OPTIONS[LANGUAGE_OPTIONS_SIZE];
+static const char* LANGUAGE_OPTIONS[] = {
+    "English",
+    "Spanish"
+};
 
 void LoadLanguage(void);
 const char* _(const char* key);

@@ -1,4 +1,4 @@
-name: Tests
+name: Build
 
 on:
   push:
@@ -26,3 +26,21 @@ jobs:
         run: |
           cp raylib/src/libraylib.a .
           make
+
+  ubuntu-clang:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build raylib
+        run: |
+          sudo apt install liblua5.3-dev libxml2-dev libglfw3-dev libglfw3 libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+          git clone --depth 1 https://github.com/raysan5/raylib
+          cd raylib/src
+          make PLATFORM=PLATFORM_DESKTOP
+          sudo make install
+
+      - name: Build Stuge
+        run: |
+          cp raylib/src/libraylib.a .
+          make CC=clang

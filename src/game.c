@@ -3,6 +3,8 @@
 
 #include "game.h"
 
+Game gGame;
+
 void ChangeState(GameState new_state) {
     gGame.prev_state = gGame.state;
     gGame.state = new_state;

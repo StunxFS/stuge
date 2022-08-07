@@ -10,11 +10,6 @@
 #include "data/langs_english.h"
 #include "data/langs_spanish.h"
 
-const char* LANGUAGE_OPTIONS[LANGUAGE_OPTIONS_SIZE] = {
-    "English",
-    "Spanish"
-};
-
 const char* _(const char* key) {
     if (toml_key_exists(gGame.lang_txt, key)) {
         toml_datum_t res = toml_string_in(gGame.lang_txt, key);

@@ -23,4 +23,5 @@ Texture2D GetTexture(const char* filename) {
         }
     }
     RuntimeError(TextFormat("GetTexture: cannot find '%s' texture", filename));
+    return (Texture2D){};
 }

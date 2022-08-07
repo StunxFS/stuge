@@ -51,7 +51,7 @@ typedef struct {
     tmx_resource_manager* tmx_resman;
 } Game;
 
-Game gGame;
+extern Game gGame;
 
 void ChangeState(GameState new_state);
 void ChangeToPrevState(void);

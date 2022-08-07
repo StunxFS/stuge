@@ -5,7 +5,7 @@
 #define STUGE_LANG_H
 
 typedef enum {
-    GL_English = 0,
+    GL_English,
     GL_Spanish
 } GameLanguage;
 

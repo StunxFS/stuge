@@ -31,11 +31,12 @@ typedef struct {
 
 typedef struct {
     int frames;
-    bool paused;
     WindowSize win_size;
 
-    const char* error;
+    bool paused;
     bool exit;
+
+    const char* error;
 
     GameLanguage lang;
     toml_table_t* lang_txt;

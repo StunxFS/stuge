@@ -24,7 +24,5 @@ void MainMenu_Draw(void) {
         ChangeState(GS_OPTIONS_MENU);
     }
 
-    if (GuiButton((Rectangle){30, gGame.win_size.height - 60, 200, 33}, _("Exit"))) {
-        gGame.state = GS_EXIT; // exit
-    }
+    gGame.exit = GuiButton((Rectangle){30, gGame.win_size.height - 60, 200, 33}, _("Exit"));
 }

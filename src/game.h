@@ -21,8 +21,7 @@ typedef enum {
     GS_COPYRIGHT,
     GS_MAIN_MENU,
     GS_OPTIONS_MENU,
-    GS_INGAME,
-    GS_EXIT
+    GS_INGAME
 } GameState;
 
 typedef struct {
@@ -36,6 +35,7 @@ typedef struct {
     WindowSize win_size;
 
     const char* error;
+    bool exit;
 
     GameLanguage lang;
     toml_table_t* lang_txt;

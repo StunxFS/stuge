@@ -20,6 +20,7 @@ lua_State* NewLuaState(void) {
     if (l == NULL) {
         RuntimeError("cannot create lua state: not enough memory");
     }
+    luaopen_base(l);
     luaopen_string(l);
     luaopen_math(l);
     luaopen_utf8(l);

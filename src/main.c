@@ -46,7 +46,7 @@ int main(void) {
     LoadMap(0);
 
     gGame.state = GS_COPYRIGHT;
-    while (!WindowShouldClose()) {
+    while (!WindowShouldClose() && !gGame.exit) {
         // --------------= update =--------------
         gGame.frames++;
         gGame.win_size = (WindowSize){GetScreenWidth(), GetScreenHeight()};
@@ -72,10 +72,6 @@ int main(void) {
                     Map_Update();
                     HUD_Update();
                 }
-            }; break;
-
-            case GS_EXIT: {
-                goto EXIT_GAME;
             }; break;
 
             default: {

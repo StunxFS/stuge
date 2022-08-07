@@ -21,8 +21,7 @@ want to modify:
 ## Using Stuge for my own game
 
 Simply modify the assets, and the engine code if necessary, to create
-your own game. Tutorials will then be made for the simple Stuge
-modification.
+your own game.
 
 ## Dependencies
 

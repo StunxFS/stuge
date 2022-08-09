@@ -14,6 +14,7 @@
 #include "image.h"
 #include "map.h"
 #include "script.h"
+#include "player.h"
 #include "utils.h"
 
 #include "tables/tilesets.h"
@@ -72,8 +73,18 @@ void Map_Update(void) {
         RunScript(gGame.map->script_idx);
         gGame.map->script_executed = true;
     }
+    Player_Update();
+    gGame.main_camera.target = (Vector2){
+        gGame.player.pos.x + 20, gGame.player.pos.y + 20
+    };
 }
 
 void Map_Draw(void) {
+    ClearBackground(BLACK);
+    BeginMode2D(gGame.main_camera);
+
     DrawTMX(gGame.map->tmx_map, 0, 0, LIGHTGRAY);
+    Player_Draw();
+
+    EndMode2D();
 }

@@ -14,10 +14,12 @@
 #include "lang.h"
 #include "image.h"
 #include "map.h"
+#include "player.h"
 #include "script.h"
 
 #include "menus/main_menu.h"
 #include "menus/options_menu.h"
+#include "menus/pause_menu.h"
 
 int main(void) {
     InitWindow(870, 580, "Stuge - StunxFS's game engine");
@@ -29,11 +31,24 @@ int main(void) {
 
     gGame = (Game){
         .frames = 0,
+        .delta_time = 0,
         .state = 0,
         .lang = 0,
         .map_idx = -1,
         .lua_state = NewLuaState(),
-        .tmx_resman = tmx_make_resource_manager()
+        .tmx_resman = tmx_make_resource_manager(),
+
+        .player = {
+            .look = PL_Down,
+            .pos = { 870 / 2.0f, 580 / 2.0f }
+        }
+    };
+
+    gGame.main_camera = (Camera2D){
+        .target = (Vector2){ gGame.player.pos.x + 20.0f, gGame.player.pos.y + 20.0f },
+        .offset = (Vector2){ 870 / 2.0f, 580 / 2.0f },
+        .rotation = 0.0f,
+        .zoom = 1.0f
     };
 
     GuiLoadStyleCyber();
@@ -49,6 +64,7 @@ int main(void) {
     while (!WindowShouldClose() && !gGame.exit) {
         // --------------= update =--------------
         gGame.frames++;
+        gGame.delta_time = GetFrameTime();
         gGame.win_size = (WindowSize){GetScreenWidth(), GetScreenHeight()};
         UpdateAPIConsts(false);
         switch (gGame.state) {
@@ -68,7 +84,14 @@ int main(void) {
             }; break;
 
             case GS_INGAME: {
-                if (!gGame.paused) {
+                if (IsKeyDown(KEY_ESCAPE)) {
+                    gGame.paused = !gGame.paused;
+                }
+                if (gGame.paused) {
+                    ShowCursor();
+                    PauseMenu_Update();
+                } else {
+                    HideCursor();
                     Map_Update();
                     HUD_Update();
                 }
@@ -105,7 +128,9 @@ int main(void) {
             }; break;
 
             case GS_INGAME: {
-                if (!gGame.paused) {
+                if (gGame.paused) {
+                    PauseMenu_Draw();
+                } else {
                     Map_Draw();
                     HUD_Draw();
                 }

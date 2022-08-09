@@ -11,6 +11,10 @@
 #include "../utils.h"
 
 #include "../data/images_basic.h"
+#include "../data/images_player_down.h"
+#include "../data/images_player_left.h"
+#include "../data/images_player_right.h"
+#include "../data/images_player_up.h"
 
 typedef struct {
     char* filename;
@@ -21,7 +25,11 @@ typedef struct {
 } StugeImage;
 
 static StugeImage IMAGE_TABLE[] = {
-    { "../images/basic.png", IMAGES_BASIC, IMAGES_BASIC_SIZE }
+    { "../images/basic.png", IMAGES_BASIC, IMAGES_BASIC_SIZE },
+    { "../images/player_down.png", IMAGES_PLAYER_DOWN, IMAGES_PLAYER_DOWN_SIZE },
+    { "../images/player_left.png", IMAGES_PLAYER_LEFT, IMAGES_PLAYER_LEFT_SIZE },
+    { "../images/player_right.png", IMAGES_PLAYER_RIGHT, IMAGES_PLAYER_RIGHT_SIZE },
+    { "../images/player_up.png", IMAGES_PLAYER_UP, IMAGES_PLAYER_UP_SIZE }
 };
 
 #endif // STUGE_IMAGE_TABLE_H

@@ -3,9 +3,11 @@
 
 #include <raylib.h>
 
+#include "game.h"
+
 void HUD_Update(void) {
 }
 
 void HUD_Draw(void) {
-    DrawText("Stuge [In-Game]", 30, 30, 20, LIGHTGRAY);
+    DrawText("Stuge [InGame]", 30, 30, 20, LIGHTGRAY);
 }

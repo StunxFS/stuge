@@ -14,6 +14,7 @@
 
 #include "lang.h"
 #include "map.h"
+#include "player.h"
 
 typedef enum {
     GS_INTERNAL,
@@ -31,7 +32,9 @@ typedef struct {
 
 typedef struct {
     int frames;
+    int delta_time;
     WindowSize win_size;
+    Camera2D main_camera;
 
     bool paused;
     bool exit;
@@ -50,6 +53,8 @@ typedef struct {
     size_t map_idx;
     Map* map;
     tmx_resource_manager* tmx_resman;
+
+    Player player;
 } Game;
 
 extern Game gGame;

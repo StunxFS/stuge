@@ -26,7 +26,11 @@ static StugeImage IMAGE_TABLE[] = {
     { "../images/player/player_down.png", IMAGES_PLAYER_PLAYER_DOWN, IMAGES_PLAYER_PLAYER_DOWN_SIZE },
     { "../images/player/player_left.png", IMAGES_PLAYER_PLAYER_LEFT, IMAGES_PLAYER_PLAYER_LEFT_SIZE },
     { "../images/player/player_right.png", IMAGES_PLAYER_PLAYER_RIGHT, IMAGES_PLAYER_PLAYER_RIGHT_SIZE },
-    { "../images/player/player_up.png", IMAGES_PLAYER_PLAYER_UP, IMAGES_PLAYER_PLAYER_UP_SIZE }
+    { "../images/player/player_up.png", IMAGES_PLAYER_PLAYER_UP, IMAGES_PLAYER_PLAYER_UP_SIZE },
+    { "../images/player/player_down_left.png", IMAGES_PLAYER_PLAYER_DOWN_LEFT, IMAGES_PLAYER_PLAYER_DOWN_LEFT_SIZE },
+    { "../images/player/player_down_right.png", IMAGES_PLAYER_PLAYER_DOWN_RIGHT, IMAGES_PLAYER_PLAYER_DOWN_RIGHT_SIZE },
+    { "../images/player/player_up_left.png", IMAGES_PLAYER_PLAYER_UP_LEFT, IMAGES_PLAYER_PLAYER_UP_LEFT_SIZE },
+    { "../images/player/player_up_right.png", IMAGES_PLAYER_PLAYER_UP_RIGHT, IMAGES_PLAYER_PLAYER_UP_RIGHT_SIZE }
 };
 
 #endif // STUGE_IMAGE_TABLE_H

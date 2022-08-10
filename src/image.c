@@ -19,6 +19,10 @@ void LoadImages(void) {
     gGame.player.face_left = IMAGE_TABLE[3].texture;
     gGame.player.face_right = IMAGE_TABLE[4].texture;
     gGame.player.face_up = IMAGE_TABLE[5].texture;
+    gGame.player.face_down_left = IMAGE_TABLE[6].texture;
+    gGame.player.face_down_right = IMAGE_TABLE[7].texture;
+    gGame.player.face_up_left = IMAGE_TABLE[8].texture;
+    gGame.player.face_up_right = IMAGE_TABLE[9].texture;
 }
 
 static StugeImage* GetStugeImage(const char* filename) {

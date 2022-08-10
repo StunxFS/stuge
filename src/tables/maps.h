@@ -6,7 +6,7 @@
 
 #include "../map.h"
 
-#include "../data/maps_basic.h"
+#include "../data/data.h"
 
 static Map MAP_TABLE[] = {
     { "GM_Basic", MAPS_BASIC, MAPS_BASIC_SIZE, 0 }

@@ -15,19 +15,27 @@ void LoadImages(void) {
         im->image = LoadImageFromMemory(".png", (const unsigned char*)im->buf, im->size);
         im->texture = LoadTextureFromImage(im->image);
     }
-    gGame.player.face_down = IMAGE_TABLE[1].texture;
-    gGame.player.face_left = IMAGE_TABLE[2].texture;
-    gGame.player.face_right = IMAGE_TABLE[3].texture;
-    gGame.player.face_up = IMAGE_TABLE[4].texture;
+    gGame.player.face_down = IMAGE_TABLE[2].texture;
+    gGame.player.face_left = IMAGE_TABLE[3].texture;
+    gGame.player.face_right = IMAGE_TABLE[4].texture;
+    gGame.player.face_up = IMAGE_TABLE[5].texture;
+}
+
+static StugeImage* GetStugeImage(const char* filename) {
+    for (size_t i = 0; i < ARR_LEN(IMAGE_TABLE); i++) {
+        StugeImage* im = &IMAGE_TABLE[i];
+        if (TextIsEqual(im->filename, filename)) {
+            return im;
+        }
+    }
+    RuntimeError(TextFormat("GetStugeImage: cannot find '%s' texture", filename));
+    return NULL;
+}
+
+Image GetImage(const char* filename) {
+    return GetStugeImage(filename)->image;
 }
 
 Texture2D GetTexture(const char* filename) {
-    for (size_t i = 0; i < ARR_LEN(IMAGE_TABLE); i++) {
-        StugeImage* im = &IMAGE_TABLE[0];
-        if (TextIsEqual(im->filename, filename)) {
-            return im->texture;
-        }
-    }
-    RuntimeError(TextFormat("GetTexture: cannot find '%s' texture", filename));
-    return (Texture2D){};
+    return GetStugeImage(filename)->texture;
 }

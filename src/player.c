@@ -22,19 +22,19 @@ void Player_Update(void) {
 void Player_Draw(void) {
     switch (gGame.player.look) {
         case PL_Up: {
-            DrawTextureV(gGame.player.face_up, gGame.player.pos, RAYWHITE);
+            DrawTextureV(gGame.player.face_up, gGame.player.pos, WHITE);
         } break;
 
         case PL_Down: {
-            DrawTextureV(gGame.player.face_down, gGame.player.pos, RAYWHITE);
+            DrawTextureV(gGame.player.face_down, gGame.player.pos, WHITE);
         } break;
 
         case PL_Left: {
-            DrawTextureV(gGame.player.face_left, gGame.player.pos, RAYWHITE);
+            DrawTextureV(gGame.player.face_left, gGame.player.pos, WHITE);
         } break;
 
         case PL_Right: {
-            DrawTextureV(gGame.player.face_right, gGame.player.pos, RAYWHITE);
+            DrawTextureV(gGame.player.face_right, gGame.player.pos, WHITE);
         } break;
     }
 }

@@ -10,11 +10,7 @@
 
 #include "../utils.h"
 
-#include "../data/images_basic.h"
-#include "../data/images_player_down.h"
-#include "../data/images_player_left.h"
-#include "../data/images_player_right.h"
-#include "../data/images_player_up.h"
+#include "../data/data.h"
 
 typedef struct {
     char* filename;
@@ -25,11 +21,12 @@ typedef struct {
 } StugeImage;
 
 static StugeImage IMAGE_TABLE[] = {
-    { "../images/basic.png", IMAGES_BASIC, IMAGES_BASIC_SIZE },
-    { "../images/player_down.png", IMAGES_PLAYER_DOWN, IMAGES_PLAYER_DOWN_SIZE },
-    { "../images/player_left.png", IMAGES_PLAYER_LEFT, IMAGES_PLAYER_LEFT_SIZE },
-    { "../images/player_right.png", IMAGES_PLAYER_RIGHT, IMAGES_PLAYER_RIGHT_SIZE },
-    { "../images/player_up.png", IMAGES_PLAYER_UP, IMAGES_PLAYER_UP_SIZE }
+    { "../images/backgrounds/bg_main_menu.png", IMAGES_BACKGROUNDS_BG_MAIN_MENU, IMAGES_BACKGROUNDS_BG_MAIN_MENU_SIZE },
+    { "../images/tilesets/basic.png", IMAGES_TILESETS_BASIC, IMAGES_TILESETS_BASIC_SIZE },
+    { "../images/player/player_down.png", IMAGES_PLAYER_PLAYER_DOWN, IMAGES_PLAYER_PLAYER_DOWN_SIZE },
+    { "../images/player/player_left.png", IMAGES_PLAYER_PLAYER_LEFT, IMAGES_PLAYER_PLAYER_LEFT_SIZE },
+    { "../images/player/player_right.png", IMAGES_PLAYER_PLAYER_RIGHT, IMAGES_PLAYER_PLAYER_RIGHT_SIZE },
+    { "../images/player/player_up.png", IMAGES_PLAYER_PLAYER_UP, IMAGES_PLAYER_PLAYER_UP_SIZE }
 };
 
 #endif // STUGE_IMAGE_TABLE_H

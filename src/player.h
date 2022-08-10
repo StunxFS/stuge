@@ -13,7 +13,7 @@ typedef enum {
     PL_UpLeft,
     PL_UpRight,
     PL_DownLeft,
-    PL_DownRight,
+    PL_DownRight
 } PlayerLook;
 
 typedef enum {

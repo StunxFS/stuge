@@ -5,9 +5,8 @@
 
 #define RAYGUI_IMPLEMENTATION
 #include "raygui/raygui.h"
-#undef RAYGUI_IMPLEMENTATION
-
 #include "raygui/styles/cyber/cyber.h"
+#undef RAYGUI_IMPLEMENTATION
 
 #include "game.h"
 #include "hud.h"

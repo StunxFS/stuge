@@ -3,7 +3,7 @@
 
 #include <raylib.h>
 
-#include "../raygui/raygui.h"
+#include "raygui/raygui.h"
 
 #include "../game.h"
 #include "../image.h"

@@ -1,5 +1,5 @@
 src/data/*
 assets/maps/stuge.tiled-session
 
-bin/*
+bin/stuge
 libraylib.a

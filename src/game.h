@@ -14,6 +14,7 @@
 
 #include "lang.h"
 #include "map.h"
+#include "ow.h"
 #include "player.h"
 
 typedef enum {
@@ -54,7 +55,7 @@ typedef struct {
     Map* map;
     tmx_resource_manager* tmx_resman;
 
-    Player player;
+    OW player;
 } Game;
 
 extern Game gGame;

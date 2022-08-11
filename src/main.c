@@ -36,12 +36,13 @@ int main(void) {
         .map_idx = -1,
         .lua_state = NewLuaState(),
         .tmx_resman = tmx_make_resource_manager(),
-
         .player = {
-            .look = PL_Down,
+            .look = OWL_Down,
             .pos = { 870 / 2.0f, 580 / 2.0f }
         }
     };
+
+    GuiLoadStyleCyber();
 
     gGame.main_camera = (Camera2D){
         .target = (Vector2){ gGame.player.pos.x + 20.0f, gGame.player.pos.y + 20.0f },
@@ -49,8 +50,6 @@ int main(void) {
         .rotation = 0.0f,
         .zoom = 1.0f
     };
-
-    GuiLoadStyleCyber();
 
     LoadLanguage();
     LoadGraphics();

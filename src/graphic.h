@@ -4,9 +4,9 @@
 #ifndef STUGE_IMAGE_H
 #define STUGE_IMAGE_H
 
-#include "tables/images.h"
+#include "tables/graphics.h"
 
-void LoadImages(void);
+void LoadGraphics(void);
 
 Image GetImage(const char* filename);
 Texture2D GetTexture(const char* filename);

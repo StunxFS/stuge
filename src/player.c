@@ -4,8 +4,6 @@
 #include "game.h"
 #include "player.h"
 
-#include "tables/images.h"
-
 void Player_Update(void) {
     gGame.player.walk_mode = IsKeyDown(KEY_LEFT_SHIFT)? PWM_Run : PWM_Walk;
     if (IsKeyDown(KEY_S)) {

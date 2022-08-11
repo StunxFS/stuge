@@ -11,7 +11,7 @@
 #undef RAYLIB_TMX_IMPLEMENTATION
 
 #include "game.h"
-#include "image.h"
+#include "graphic.h"
 #include "map.h"
 #include "script.h"
 #include "player.h"

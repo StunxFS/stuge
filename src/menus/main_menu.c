@@ -6,7 +6,7 @@
 #include "raygui/raygui.h"
 
 #include "../game.h"
-#include "../image.h"
+#include "../graphic.h"
 #include "../lang.h"
 
 void MainMenu_Update(void) {
@@ -15,7 +15,7 @@ void MainMenu_Update(void) {
 
 void MainMenu_Draw(void) {
     ClearBackground(BLACK);
-    DrawTexture(GetTexture("../images/backgrounds/bg_main_menu.png"), 0, 0, WHITE);
+    DrawTexture(GetTexture("../graphics/backgrounds/bg_main_menu.png"), 0, 0, WHITE);
     DrawText("Stuge", 30, 30, 40, LIGHTGRAY);
 
     if (GuiButton((Rectangle){30, gGame.screen_size.height - 140, 200, 33}, _("NewGame"))) {

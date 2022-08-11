@@ -11,7 +11,7 @@
 #include "game.h"
 #include "hud.h"
 #include "lang.h"
-#include "image.h"
+#include "graphic.h"
 #include "map.h"
 #include "player.h"
 #include "script.h"
@@ -53,7 +53,7 @@ int main(void) {
     GuiLoadStyleCyber();
 
     LoadLanguage();
-    LoadImages();
+    LoadGraphics();
     LoadTilesets();
     UpdateAPIConsts(true);
 

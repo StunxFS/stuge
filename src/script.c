@@ -37,10 +37,10 @@ static void LuaReport(lua_State* L, int status) {
 }
 
 void RunScript(int idx) {
-    if (idx < 0 || idx >= ARR_LEN(SCRIPT_TABLE)) {
+    if (idx < 0 || idx >= ARR_LEN(SCRIPTS_TABLE)) {
         RuntimeError(TextFormat("cannot run script %d (index out of range)", idx));
     }
-    LuaReport(gGame.lua_state, luaL_dostring(gGame.lua_state, SCRIPT_TABLE[idx].buf));
+    LuaReport(gGame.lua_state, luaL_dostring(gGame.lua_state, SCRIPTS_TABLE[idx].buf));
 }
 
 void UpdateAPIConsts(bool first_time) {
@@ -54,8 +54,8 @@ void UpdateAPIConsts(bool first_time) {
         lua_setglobal(gGame.lua_state, "GL_Spanish");
 
         // We register the names of the maps
-        for (int i = 0; i < ARR_LEN(MAP_TABLE); i++) {
-            Map* map = &MAP_TABLE[i];
+        for (int i = 0; i < ARR_LEN(MAPS_TABLE); i++) {
+            Map* map = &MAPS_TABLE[i];
             lua_pushinteger(gGame.lua_state, i);
             lua_setglobal(gGame.lua_state, map->name);
         }

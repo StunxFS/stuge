@@ -13,7 +13,7 @@ typedef struct {
     size_t size;
 } Script;
 
-static Script SCRIPT_TABLE[] = {
+static Script SCRIPTS_TABLE[] = {
     { SCRIPTS_BASIC, SCRIPTS_BASIC_SIZE }
 };
 

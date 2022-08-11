@@ -20,7 +20,7 @@ typedef struct {
     Texture2D texture;
 } StugeGraphic;
 
-static StugeGraphic GRAPHIC_TABLE[] = {
+static StugeGraphic GRAPHICS_TABLE[] = {
     { "../graphics/backgrounds/bg_main_menu.png", GRAPHICS_BACKGROUNDS_BG_MAIN_MENU, GRAPHICS_BACKGROUNDS_BG_MAIN_MENU_SIZE },
     { "../graphics/tilesets/basic.png", GRAPHICS_TILESETS_BASIC, GRAPHICS_TILESETS_BASIC_SIZE },
     { "../graphics/player/player_down.png", GRAPHICS_PLAYER_PLAYER_DOWN, GRAPHICS_PLAYER_PLAYER_DOWN_SIZE },

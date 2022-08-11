@@ -8,7 +8,7 @@
 
 #include "../data/data.h"
 
-static Map MAP_TABLE[] = {
+static Map MAPS_TABLE[] = {
     { "GM_Basic", MAPS_BASIC, MAPS_BASIC_SIZE, 0 }
 };
 

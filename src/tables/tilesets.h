@@ -14,7 +14,7 @@ typedef struct {
     size_t size;
 } Tileset;
 
-static Tileset TILESET_TABLE[] = {
+static Tileset TILESETS_TABLE[] = {
     { "../tilesets/basic.tsx", TILESETS_BASIC, TILESETS_BASIC_SIZE }
 };
 

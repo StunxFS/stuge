@@ -1,5 +1,5 @@
 CC := gcc
-EXE_NAME := stuge
+EXE_NAME := bin/stuge
 
 CFILES := `find . -iname '*.c'`
 

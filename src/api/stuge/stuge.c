@@ -6,10 +6,6 @@
 #include "stuge.h"
 
 static const luaL_Reg lib[] = {
-    { "player_look_up", stuge_player_look_up },
-    { "player_look_down", stuge_player_look_down },
-    { "player_look_left", stuge_player_look_left },
-    { "player_look_right", stuge_player_look_right },
     { NULL, NULL }
 };
 

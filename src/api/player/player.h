@@ -6,5 +6,9 @@
 #include "../../game.h"
 #include "../../utils.h"
 
-int luaopen_stuge(lua_State* L);
+int luaopen_player(lua_State* L);
 
+int player_look_up(lua_State* L);
+int player_look_down(lua_State* L);
+int player_look_left(lua_State* L);
+int player_look_right(lua_State* L);

@@ -65,7 +65,7 @@ for asset in ASSETS:
             fn.write(f"#ifndef STUGE_{final_name_upper}_H\n")
             fn.write(f"#define STUGE_{final_name_upper}_H\n\n")
             fn.write(f"#define {final_name_upper}_SIZE {len(bytes)}\n\n")
-            fn.write(f"char {final_name_upper}[{final_name_upper}_SIZE];\n\n")
+            fn.write(f"extern char {final_name_upper}[{final_name_upper}_SIZE];\n\n")
             fn.write(f"#endif // STUGE_{final_name_upper}_H\n")
 
         with open(final_name_c, "w") as fn:

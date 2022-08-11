@@ -10,7 +10,7 @@ void PauseMenu_Update(void) {
 
 void PauseMenu_Draw(void) {
     DrawRectangleRec(
-        (Rectangle){0, 10, gGame.win_size.width, 40},
+        (Rectangle){0, 10, gGame.screen_size.width, 40},
         (Color){ 0, 0, 0, 127 }
     );
 }

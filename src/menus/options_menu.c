@@ -28,7 +28,7 @@ void OptionsMenu_Draw(void) {
         (int*)&gGame.lang, true
     );
 
-    if (GuiButton((Rectangle){30, gGame.win_size.height - 60, 200, 33}, _("Back"))) {
+    if (GuiButton((Rectangle){30, gGame.screen_size.height - 60, 200, 33}, _("Back"))) {
         ChangeToPrevState();
     }
 }

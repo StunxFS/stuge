@@ -18,13 +18,13 @@ void MainMenu_Draw(void) {
     DrawTexture(GetTexture("../images/backgrounds/bg_main_menu.png"), 0, 0, WHITE);
     DrawText("Stuge", 30, 30, 40, LIGHTGRAY);
 
-    if (GuiButton((Rectangle){30, gGame.win_size.height - 140, 200, 33}, _("NewGame"))) {
+    if (GuiButton((Rectangle){30, gGame.screen_size.height - 140, 200, 33}, _("NewGame"))) {
         gGame.state = GS_INGAME;
     }
 
-    if (GuiButton((Rectangle){30, gGame.win_size.height - 100, 200, 33}, _("Options"))) {
+    if (GuiButton((Rectangle){30, gGame.screen_size.height - 100, 200, 33}, _("Options"))) {
         ChangeState(GS_OPTIONS_MENU);
     }
 
-    gGame.exit = GuiButton((Rectangle){30, gGame.win_size.height - 60, 200, 33}, _("Exit"));
+    gGame.exit = GuiButton((Rectangle){30, gGame.screen_size.height - 60, 200, 33}, _("Exit"));
 }

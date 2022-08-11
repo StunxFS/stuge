@@ -64,7 +64,7 @@ int main(void) {
         // --------------= update =--------------
         gGame.frames++;
         gGame.delta_time = GetFrameTime();
-        gGame.win_size = (WindowSize){GetScreenWidth(), GetScreenHeight()};
+        gGame.screen_size = (ScreenSize){GetScreenWidth(), GetScreenHeight()};
         UpdateAPIConsts(false);
         switch (gGame.state) {
             case GS_COPYRIGHT: {
@@ -113,8 +113,8 @@ int main(void) {
             case GS_COPYRIGHT: {
                 ClearBackground(BLACK);
                 DrawText(
-                    "(C) 2022 StunxFS. All rights reserved.", gGame.win_size.height - 329,
-                    gGame.win_size.height - 290, 20, LIGHTGRAY
+                    "(C) 2022 StunxFS. All rights reserved.", gGame.screen_size.height - 329,
+                    gGame.screen_size.height - 290, 20, LIGHTGRAY
                 );
             }; break;
 

@@ -28,12 +28,12 @@ typedef enum {
 typedef struct {
     int width;
     int height;
-} WindowSize;
+} ScreenSize;
 
 typedef struct {
     int frames;
     int delta_time;
-    WindowSize win_size;
+    ScreenSize screen_size;
     Camera2D main_camera;
 
     bool paused;

@@ -50,7 +50,7 @@ langs and sounds you can use any editor of your choice.
 
 ## Building
 
-Just run `make`.
+Just run `python3 tools/make.py`.
 
 ## Credits
 

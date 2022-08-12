@@ -1,5 +1,10 @@
-src/data/*
-assets/maps/stuge.tiled-session
+__pycache__
 
 bin/stuge
+
+*.o
+src/data/*
+
+assets/maps/stuge.tiled-session
+
 libraylib.a

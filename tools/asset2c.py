@@ -3,22 +3,9 @@
 
 # Script used to embed the assets in the final binary.
 
-import os, sys, glob, subprocess
+import os, sys, glob
 
-
-class ProcessResult:
-
-    def __init__(self, out, err, exit_code):
-        self.out = out
-        self.err = err
-        self.exit_code = exit_code
-
-
-def execute(*args):
-    res = subprocess.run(args, capture_output=True, encoding='utf-8')
-    stdout = res.stdout.strip() if res.stdout else ""
-    stderr = res.stderr.strip() if res.stderr else ""
-    return ProcessResult(stdout, stderr, res.returncode)
+import utils
 
 
 def read_cc():
@@ -65,7 +52,9 @@ for asset in ASSETS:
             fn.write(f"#ifndef STUGE_{final_name_upper}_H\n")
             fn.write(f"#define STUGE_{final_name_upper}_H\n\n")
             fn.write(f"#define {final_name_upper}_SIZE {len(bytes)}\n\n")
-            fn.write(f"extern char {final_name_upper}[{final_name_upper}_SIZE];\n\n")
+            fn.write(
+                f"extern char {final_name_upper}[{final_name_upper}_SIZE];\n\n"
+            )
             fn.write(f"#endif // STUGE_{final_name_upper}_H\n")
 
         with open(final_name_c, "w") as fn:
@@ -90,8 +79,9 @@ for asset in ASSETS:
                     line_len += len(bstr) + 2
             fn.write("};\n\n")
 
-    res = execute(CC, "-c", "-o",
-                  os.path.join("src", "data", final_name + ".o"), final_name_c)
+    res = utils.execute(CC, "-c", "-o",
+                        os.path.join("src", "data", final_name + ".o"),
+                        final_name_c)
     if res.exit_code == 0:
         os.remove(final_name_c)
     else:

@@ -22,8 +22,9 @@ typedef enum {
 } OWLook;
 
 typedef struct {
-    WalkMode walk_mode;
     OWLook look;
+    Vector2 pos;
+    WalkMode walk_mode;
 
     Texture2D face_up;
     Texture2D face_down;
@@ -34,8 +35,6 @@ typedef struct {
     Texture2D face_up_right;
     Texture2D face_down_left;
     Texture2D face_down_right;
-
-    Vector2 pos;
 } OW;
 
 #endif // STUGE_OW_H

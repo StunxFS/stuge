@@ -74,8 +74,9 @@ void Map_Update(void) {
         gGame.map->script_executed = true;
     }
     Player_Update();
-    gGame.main_camera.target = (Vector2){
-        gGame.player.pos.x + 20, gGame.player.pos.y + 20
+    gGame.main_camera.target = (Vector2){ gGame.player.pos.x, gGame.player.pos.y };
+    gGame.main_camera.offset = (Vector2){
+        gGame.screen_size.width / 2, gGame.screen_size.height / 2
     };
 }
 

@@ -3,31 +3,16 @@
 
 #include "player.h"
 
-int player_look_up(lua_State* L) {
-    gGame.player.look = OWL_Up;
-    return 0;
-}
-
-int player_look_down(lua_State* L) {
-    gGame.player.look = OWL_Down;
-    return 0;
-}
-
-int player_look_left(lua_State* L) {
-    gGame.player.look = OWL_Left;
-    return 0;
-}
-
-int player_look_right(lua_State* L) {
-    gGame.player.look = OWL_Right;
+int player_look(lua_State* L) {
+    if (lua_gettop(L) != 1) {
+        return luaL_error(L, "expecting exactly 1 arguments");
+    }
+    gGame.player.look = luaL_checkinteger(L, 1);
     return 0;
 }
 
 static const luaL_Reg lib[] = {
-    { "look_up", player_look_up },
-    { "look_down", player_look_down },
-    { "look_left", player_look_left },
-    { "look_right", player_look_right },
+    { "look", player_look },
     { NULL, NULL }
 };
 

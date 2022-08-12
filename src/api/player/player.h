@@ -8,7 +8,4 @@
 
 int luaopen_player(lua_State* L);
 
-int player_look_up(lua_State* L);
-int player_look_down(lua_State* L);
-int player_look_left(lua_State* L);
-int player_look_right(lua_State* L);
+int player_look(lua_State* L);

@@ -8,6 +8,8 @@
 #include "raygui/styles/cyber/cyber.h"
 #undef RAYGUI_IMPLEMENTATION
 
+#include "config.h"
+
 #include "game.h"
 #include "hud.h"
 #include "lang.h"
@@ -21,7 +23,7 @@
 #include "menus/pause_menu.h"
 
 int main(void) {
-    InitWindow(870, 580, "Stuge - StunxFS's game engine");
+    InitWindow(GAME_DEFAULT_WIDTH, GAME_DEFAULT_HEIGHT, GAME_NAME);
     SetExitKey(KEY_NULL);
     SetTargetFPS(60);
 
@@ -38,15 +40,15 @@ int main(void) {
         .tmx_resman = tmx_make_resource_manager(),
         .player = {
             .look = OWL_Down,
-            .pos = { 870 / 2.0f, 580 / 2.0f }
+            .pos = { GAME_DEFAULT_WIDTH / 2, GAME_DEFAULT_HEIGHT / 2 }
         }
     };
 
     GuiLoadStyleCyber();
 
     gGame.main_camera = (Camera2D){
-        .target = (Vector2){ gGame.player.pos.x + 20.0f, gGame.player.pos.y + 20.0f },
-        .offset = (Vector2){ 870 / 2.0f, 580 / 2.0f },
+        .target = (Vector2){ gGame.player.pos.x, gGame.player.pos.y },
+        .offset = (Vector2){ GAME_DEFAULT_WIDTH / 2, GAME_DEFAULT_HEIGHT / 2 },
         .rotation = 0.0f,
         .zoom = 1.0f
     };
@@ -67,7 +69,7 @@ int main(void) {
         UpdateAPIConsts(false);
         switch (gGame.state) {
             case GS_COPYRIGHT: {
-                if (gGame.frames > 60) {
+                if (gGame.frames > FRAME) {
                     // 1 second (60f) later we go to the main menu
                     gGame.state = GS_MAIN_MENU;
                 }
@@ -140,7 +142,7 @@ int main(void) {
         EndDrawing();
         // --------------------------------------
     }
-EXIT_GAME:
+
     Cleanup();
     CloseWindow();
     return 0;

@@ -28,6 +28,44 @@ lua_State* NewLuaState(void) {
     return l;
 }
 
+void UpdateAPIConsts(bool first_time) {
+    // If this is the first time it's run, we register some useful
+    // constants
+    if (first_time) {
+        lua_pushinteger(gGame.lua_state, OWL_Up);
+        lua_setglobal(gGame.lua_state, "OWL_Up");
+        lua_pushinteger(gGame.lua_state, OWL_Down);
+        lua_setglobal(gGame.lua_state, "OWL_Down");
+        lua_pushinteger(gGame.lua_state, OWL_Left);
+        lua_setglobal(gGame.lua_state, "OWL_Left");
+        lua_pushinteger(gGame.lua_state, OWL_Right);
+        lua_setglobal(gGame.lua_state, "OWL_Right");
+        lua_pushinteger(gGame.lua_state, OWL_UpLeft);
+        lua_setglobal(gGame.lua_state, "OWL_UpLeft");
+        lua_pushinteger(gGame.lua_state, OWL_DownLeft);
+        lua_setglobal(gGame.lua_state, "OWL_DownLeft");
+        lua_pushinteger(gGame.lua_state, OWL_UpRight);
+        lua_setglobal(gGame.lua_state, "OWL_UpRight");
+        lua_pushinteger(gGame.lua_state, OWL_DownRight);
+        lua_setglobal(gGame.lua_state, "OWL_DownRight");
+
+        lua_pushinteger(gGame.lua_state, GL_English);
+        lua_setglobal(gGame.lua_state, "GL_English");
+        lua_pushinteger(gGame.lua_state, GL_Spanish);
+        lua_setglobal(gGame.lua_state, "GL_Spanish");
+
+        for (int i = 0; i < ARR_LEN(MAPS_TABLE); i++) {
+            Map* map = &MAPS_TABLE[i];
+            lua_pushinteger(gGame.lua_state, i);
+            lua_setglobal(gGame.lua_state, map->name);
+        }
+    }
+
+    // We register the current game language in use
+    lua_pushinteger(gGame.lua_state, gGame.lang);
+    lua_setglobal(gGame.lua_state, "GAME_LANG");
+}
+
 static void LuaReport(lua_State* L, int status) {
     if (status != LUA_OK) {
         const char* msg = lua_tostring(L, -1);
@@ -41,27 +79,4 @@ void RunScript(int idx) {
         RuntimeError(TextFormat("cannot run script %d (index out of range)", idx));
     }
     LuaReport(gGame.lua_state, luaL_dostring(gGame.lua_state, SCRIPTS_TABLE[idx].buf));
-}
-
-void UpdateAPIConsts(bool first_time) {
-    // If this is the first time it's run, we register some useful
-    // constants
-    if (first_time) {
-        // We register the available languages
-        lua_pushinteger(gGame.lua_state, GL_English);
-        lua_setglobal(gGame.lua_state, "GL_English");
-        lua_pushinteger(gGame.lua_state, GL_Spanish);
-        lua_setglobal(gGame.lua_state, "GL_Spanish");
-
-        // We register the names of the maps
-        for (int i = 0; i < ARR_LEN(MAPS_TABLE); i++) {
-            Map* map = &MAPS_TABLE[i];
-            lua_pushinteger(gGame.lua_state, i);
-            lua_setglobal(gGame.lua_state, map->name);
-        }
-    }
-
-    // We register the current game language in use
-    lua_pushinteger(gGame.lua_state, gGame.lang);
-    lua_setglobal(gGame.lua_state, "GAME_LANG");
 }

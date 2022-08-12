@@ -6,6 +6,9 @@
 
 #define ARR_LEN(arr) (sizeof(arr) / sizeof(arr[0]))
 
+#define FRAME 60
+#define FRAMES(count) ((count) * FRAME)
+
 void RuntimeError(const char* msg);
 
 #endif // STUGE_UTILS_H

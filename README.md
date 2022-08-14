@@ -20,6 +20,8 @@ want to modify:
 
 * `src/`: The engine code, the heart of Stuge.
 
+* `sted/`: Sted is the official and easy-to-use editor for the Stuge engine.
+
 * `tools/`: Useful scripts that can be used to make development easier.
 
 ## Using Stuge for my own game

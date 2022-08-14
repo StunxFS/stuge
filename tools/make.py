@@ -45,7 +45,7 @@ if ASSETS_MODIFIED or os.path.getmtime(
         else:
             mf.write(f"build: {OBJS_LIST}\n")
         mf.write(
-            f"	$(CC) {DATA_OBJS} {OBJS_LIST}  libraylib.a {LINKS} -o $(GAME_NAME)\n\n"
+            f"	$(CC) {DATA_OBJS} {OBJS_LIST} libraylib.a {LINKS} -o $(GAME_NAME)\n\n"
         )
 
         for i, cfile in enumerate(CFILES):

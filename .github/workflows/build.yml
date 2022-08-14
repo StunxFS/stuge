@@ -25,7 +25,7 @@ jobs:
       - name: Build Stuge
         run: |
           cp raylib/src/libraylib.a .
-          python3 make.py
+          python3 tools/make.py
 
   ubuntu-clang:
     runs-on: ubuntu-20.04
@@ -43,4 +43,4 @@ jobs:
       - name: Build Stuge
         run: |
           cp raylib/src/libraylib.a .
-          python3 make.py CC=clang
+          python3 tools/make.py CC=clang

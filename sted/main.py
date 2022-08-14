@@ -8,12 +8,12 @@ import sted
 DB = sted.DB()
 
 
-def game_ide_status(status):
+def game_editor_status(status):
     dpg.set_value("label_status", status)
     dpg.configure_item("ide_status", show=True)
 
 
-def game_hidden_ide_status():
+def game_hidden_editor_status():
     dpg.set_value("label_status", "")
     dpg.configure_item("ide_status", show=False)
 
@@ -25,33 +25,33 @@ def game_modified():
 
 
 def build_cb():
-    game_ide_status("Building game...")
+    game_editor_status("Building game...")
     sted.build_stuge(True)
-    game_hidden_ide_status()
+    game_hidden_editor_status()
 
 
 def rebuild_cb():
-    game_ide_status("Rebuilding game...")
+    game_editor_status("Rebuilding game...")
     sted.rebuild_stuge(True)
-    game_hidden_ide_status()
+    game_hidden_editor_status()
 
 
 def build_and_run_cb():
-    game_ide_status("Building and running game...")
+    game_editor_status("Building and running game...")
     sted.build_and_run_stuge(True)
-    game_hidden_ide_status()
+    game_hidden_editor_status()
 
 
 def run_cb():
-    game_ide_status("Running game...")
+    game_editor_status("Running game...")
     sted.run_stuge()
-    game_hidden_ide_status()
+    game_hidden_editor_status()
 
 
 def clean_cb():
-    game_ide_status("Cleaning...")
+    game_editor_status("Cleaning...")
     sted.clean_stuge(True)
-    game_hidden_ide_status()
+    game_hidden_editor_status()
 
 
 def game_name_cb():

@@ -50,31 +50,31 @@ def execute(*args):
     return ProcessResult(stdout, stderr, res.returncode)
 
 
-def build_stuge(from_ide=False):
+def build_stuge(from_editor=False):
     global GAME_WAS_MODIFIED
     if GAME_WAS_MODIFIED:
         clean_stuge()
     print(">> make.py build")
     res = execute(sys.executable, MAKE_PY, "build")
-    if from_ide and res.exit_code == 0:
+    if from_editor and res.exit_code == 0:
         msgbox("Operation completed", "Game built =)")
     else:
         msgbox("Failed to build game", res.err)
     return res.exit_code
 
 
-def rebuild_stuge(from_ide=False):
+def rebuild_stuge(from_editor=False):
     clean_stuge()
     print(">> make.py build")
     res = execute(sys.executable, MAKE_PY, "build")
-    if from_ide and res.exit_code == 0:
+    if from_editor and res.exit_code == 0:
         msgbox("Operation completed", "Rebuilt game =)")
     else:
         msgbox("Failed to rebuild game", res.err)
 
 
-def build_and_run_stuge(from_ide=False):
-    if build_stuge(from_ide) == 0:
+def build_and_run_stuge(from_editor=False):
+    if build_stuge(from_editor) == 0:
         run_stuge()
 
 
@@ -86,10 +86,10 @@ def run_stuge():
         msgbox("The game could not be launched", "The binary was not found")
 
 
-def clean_stuge(from_ide=False):
+def clean_stuge(from_editor=False):
     print(">> make.py clean")
     res = execute(sys.executable, MAKE_PY, "clean")
-    if from_ide and res.exit_code == 0:
+    if from_editor and res.exit_code == 0:
         msgbox("Operation completed", "Deleted `.o` files =)")
 
 

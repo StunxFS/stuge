@@ -7,7 +7,8 @@ import os, glob, sys
 
 import utils
 
-MAKEFILE_MTIME = os.path.getmtime("Makefile")
+NOT_EXISTS_MAKEFILE = not os.path.exists("Makefile")
+MAKEFILE_MTIME = 0 if NOT_EXISTS_MAKEFILE else os.path.getmtime("Makefile")
 
 DATA_OBJS = " ".join([dobj for dobj in glob.glob("src/data/*.o")])
 
@@ -24,7 +25,7 @@ LINKS = " ".join(
 
 ASSETS_MODIFIED = os.path.getmtime("assets") != MAKEFILE_MTIME
 
-if ASSETS_MODIFIED or os.path.getmtime(
+if NOT_EXISTS_MAKEFILE or ASSETS_MODIFIED or os.path.getmtime(
         "src") != MAKEFILE_MTIME or os.path.getmtime(
             "thirdparty") != MAKEFILE_MTIME:
     with open("Makefile", "w") as mf:

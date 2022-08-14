@@ -45,6 +45,17 @@ libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
 
 They can be installed with `apt install`.
 
+### Sted Dependencies
+
+The editor requires Python 3 (at least version 3.8) and the `dearpygui` library
+to run.
+
+On Linux it can be installed like this:
+
+```bash
+sudo pip3 install dearpygui
+```
+
 ### Asset Dependencies
 
 [Tiled](http://mapeditor.org) is used for maps and tilesets. For graphics, scripts,
@@ -52,7 +63,7 @@ langs and sounds you can use any editor of your choice.
 
 ## Building
 
-Just run `python3 tools/make.py`.
+Just run `python3 tools/make.py`, or from **Sted**, just click the `Build` button.
 
 ## Credits
 

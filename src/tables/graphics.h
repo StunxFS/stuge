@@ -8,8 +8,6 @@
 
 #include <raylib.h>
 
-#include "../utils.h"
-
 #include "../data/data.h"
 
 typedef struct {

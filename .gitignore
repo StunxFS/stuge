@@ -1,10 +1,12 @@
 __pycache__
 
-bin/stuge
+Makefile
 
 *.o
 src/data/*
 
+bin/stuge
+sted.sqlite
 assets/maps/stuge.tiled-session
 
 libraylib.a

@@ -17,6 +17,7 @@
 #include "map.h"
 #include "player.h"
 #include "script.h"
+#include "utils.h"
 
 #include "menus/main_menu.h"
 #include "menus/options_menu.h"

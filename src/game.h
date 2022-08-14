@@ -16,6 +16,7 @@
 #include "map.h"
 #include "ow.h"
 #include "player.h"
+#include "utils.h"
 
 typedef enum {
     GS_INTERNAL,

@@ -1,11 +1,11 @@
+#! /usr/bin/env python3
+
 # (C) 2022 StunxFS. All rights reserved. Use of this source code is
 # governed by an MIT license that can be found in the LICENSE file.
 
 import dearpygui.dearpygui as dpg
 
 import sted
-
-DB = sted.DB()
 
 
 def game_editor_status(status):
@@ -49,37 +49,39 @@ def run_cb():
 
 
 def clean_cb():
-    game_editor_status("Cleaning...")
+    game_editor_status("Cleaning `.o` files...")
     sted.clean_stuge(True)
     game_hidden_editor_status()
 
 
 def game_name_cb():
-    DB.setConfig("GAME_NAME", dpg.get_value("game_name"))
+    sted.DB.setConfig("GAME_NAME", dpg.get_value("game_name"))
     game_modified()
 
 
 def game_default_width_cb():
-    DB.setConfig("GAME_DEFAULT_WIDTH", dpg.get_value("game_default_width"))
+    sted.DB.setConfig("GAME_DEFAULT_WIDTH",
+                      dpg.get_value("game_default_width"))
     game_modified()
 
 
 def game_default_height_cb():
-    DB.setConfig("GAME_DEFAULT_HEIGHT", dpg.get_value("game_default_height"))
+    sted.DB.setConfig("GAME_DEFAULT_HEIGHT",
+                      dpg.get_value("game_default_height"))
     game_modified()
 
 
 def save_cb():
     sted.GAME_MODIFIED = False
     sted.GAME_WAS_MODIFIED = True
-    DB.writeConfigHeader()
+    sted.DB.writeConfigHeader()
     dpg.configure_item("game_modified", show=False)
 
 
 dpg.create_context()
 
 with dpg.window(tag="MainWindow"):
-    if sted.insideStugeSRC():
+    if sted.inside_stuge_src():
         with dpg.group(horizontal=True):
             dpg.add_text(f"Sted v{sted.VERSION} |")
             dpg.add_button(label="Build", callback=build_cb)
@@ -98,22 +100,35 @@ with dpg.window(tag="MainWindow"):
             with dpg.tab(label="Game"):
                 with dpg.group(horizontal=True):
                     dpg.add_text("Game name:")
-                    dpg.add_input_text(tag="game_name",
-                                       default_value=DB.getConfig("GAME_NAME"),
-                                       hint="Enter a name",
-                                       callback=game_name_cb)
+                    dpg.add_input_text(
+                        tag="game_name",
+                        default_value=sted.DB.getConfig("GAME_NAME"),
+                        hint="Enter a name",
+                        callback=game_name_cb)
                 with dpg.group(horizontal=True):
                     dpg.add_text("Game default width:")
-                    dpg.add_input_int(tag="game_default_width",
-                                      default_value=int(
-                                          DB.getConfig("GAME_DEFAULT_WIDTH")),
-                                      callback=game_default_width_cb)
+                    dpg.add_input_int(
+                        tag="game_default_width",
+                        default_value=int(
+                            sted.DB.getConfig("GAME_DEFAULT_WIDTH")),
+                        callback=game_default_width_cb)
                 with dpg.group(horizontal=True):
                     dpg.add_text("Game default height:")
-                    dpg.add_input_int(tag="game_default_height",
-                                      default_value=int(
-                                          DB.getConfig("GAME_DEFAULT_HEIGHT")),
-                                      callback=game_default_height_cb)
+                    dpg.add_input_int(
+                        tag="game_default_height",
+                        default_value=int(
+                            sted.DB.getConfig("GAME_DEFAULT_HEIGHT")),
+                        callback=game_default_height_cb)
+            with dpg.tab(label="Advanced"):
+                with dpg.collapsing_header(label="Compilation"):
+                    with dpg.group(horizontal=True):
+                        dpg.add_text("C compiler:")
+                        dpg.add_input_text(
+                            tag="game_cc",
+                            default_value=sted.DB.getConfig("GAME_CC"),
+                            hint="Enter a valid C compiler",
+                            callback=lambda _, x: sted.DB.setConfig(
+                                "GAME_CC", x))
             with dpg.tab(label="About"):
                 dpg.add_text("Sted - The Stuge editor")
                 dpg.add_text(f"Version: {sted.VERSION}")
@@ -140,4 +155,4 @@ dpg.set_primary_window("MainWindow", True)
 dpg.start_dearpygui()
 dpg.destroy_context()
 
-DB.close()
+sted.DB.close()

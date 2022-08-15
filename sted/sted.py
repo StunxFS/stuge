@@ -50,55 +50,7 @@ def execute(*args):
     return ProcessResult(stdout, stderr, res.returncode)
 
 
-def build_stuge(from_editor=False):
-    global GAME_WAS_MODIFIED
-    if GAME_WAS_MODIFIED:
-        clean_stuge()
-    print(">> make.py build")
-    res = execute(sys.executable, MAKE_PY, "build")
-    if from_editor and res.exit_code == 0:
-        msgbox("Operation completed", "Game built =)")
-    else:
-        msgbox("Failed to build game", res.err)
-    return res.exit_code
-
-
-def rebuild_stuge(from_editor=False):
-    clean_stuge()
-    print(">> make.py build")
-    res = execute(sys.executable, MAKE_PY, "build")
-    if from_editor and res.exit_code == 0:
-        msgbox("Operation completed", "Rebuilt game =)")
-    else:
-        msgbox("Failed to rebuild game", res.err)
-
-
-def build_and_run_stuge(from_editor=False):
-    if build_stuge(from_editor) == 0:
-        run_stuge()
-
-
-def run_stuge():
-    if path.exists(GAME_EXE):
-        print(">> run game")
-        execute("./" + GAME_EXE)
-    else:
-        msgbox("The game could not be launched", "The binary was not found")
-
-
-def clean_stuge(from_editor=False):
-    print(">> make.py clean")
-    res = execute(sys.executable, MAKE_PY, "clean")
-    if from_editor and res.exit_code == 0:
-        msgbox("Operation completed", "Deleted `.o` files =)")
-
-
-def insideStugeSRC():
-    return path.exists("src") and path.isdir("src") and path.isfile(
-        path.join("src", "ow.c"))
-
-
-class DB:
+class DataBase:
 
     def __init__(self):
         self.db = sqlite3.connect(DB_PATH, check_same_thread=False)
@@ -110,7 +62,8 @@ class DB:
             cur.executemany("INSERT INTO config VALUES(?, ?, ?)",
                             [(0, "GAME_NAME", "stuge"),
                              (1, 'GAME_DEFAULT_WIDTH', '870'),
-                             (2, 'GAME_DEFAULT_HEIGHT', '580')])
+                             (2, 'GAME_DEFAULT_HEIGHT', '580'),
+                             (3, 'GAME_CC', 'gcc')])
             self.db.commit()
 
     def setConfig(self, name, value):
@@ -165,3 +118,56 @@ class DB:
 
     def close(self):
         self.db.close()
+
+
+DB = DataBase()
+
+
+def make_stuge():
+    return execute(sys.executable, MAKE_PY, "build",
+                   f"CC={DB.getConfig('GAME_CC')}",
+                   f"OPTIMIZE={DB.getConfig('GAME_OPTIMIZE')}")
+
+
+def build_stuge(from_editor=False):
+    global GAME_WAS_MODIFIED
+    if GAME_WAS_MODIFIED:
+        clean_stuge()
+    res = make_stuge()
+    if from_editor and res.exit_code == 0:
+        msgbox("Operation completed", "Game built =)")
+    else:
+        msgbox("Failed to build game", res.err)
+    return res.exit_code
+
+
+def rebuild_stuge(from_editor=False):
+    clean_stuge()
+    res = make_stuge()
+    if from_editor and res.exit_code == 0:
+        msgbox("Operation completed", "Rebuilt game =)")
+    else:
+        msgbox("Failed to rebuild game", res.err)
+
+
+def build_and_run_stuge(from_editor=False):
+    if build_stuge(from_editor) == 0:
+        run_stuge()
+
+
+def run_stuge():
+    if path.exists(GAME_EXE):
+        execute("./" + GAME_EXE)
+    else:
+        msgbox("The game could not be launched", "The binary was not found")
+
+
+def clean_stuge(from_editor=False):
+    res = execute(sys.executable, MAKE_PY, "clean")
+    if from_editor and res.exit_code == 0:
+        msgbox("Operation completed", "Deleted `.o` files =)")
+
+
+def inside_stuge_src():
+    return path.exists("src") and path.isdir("src") and path.isfile(
+        path.join("src", "ow.c"))

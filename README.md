@@ -1,4 +1,8 @@
+<div align="center">
+
 # Stuge
+
+</div>
 
 Stuge (**Stu**nxFS's **G**ame **E**ngine) is a 2D top-down game
 engine (for GTA-style games) developed in C, using
@@ -19,8 +23,6 @@ want to modify:
     etc. These are embedded in the binary.
 
 * `src/`: The engine code, the heart of Stuge.
-
-* `sted/`: Sted is the official and easy-to-use editor for the Stuge engine.
 
 * `tools/`: Useful scripts that can be used to make development easier.
 
@@ -44,17 +46,6 @@ libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
 ```
 
 They can be installed with `apt install`.
-
-### Sted Dependencies
-
-The editor requires Python 3 (at least version 3.8) and the `dearpygui` library
-to run.
-
-On Linux it can be installed like this:
-
-```bash
-sudo pip3 install dearpygui
-```
 
 ### Asset Dependencies
 

@@ -60,4 +60,4 @@ if NOT_EXISTS_MAKEFILE or ASSETS_MODIFIED or os.path.getmtime(
 
 res = utils.execute("make", *sys.argv[1:])
 if res.exit_code != 0:
-    print(res.err, sys.stderr)
+    print(res.err, file=sys.stderr)

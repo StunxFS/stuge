@@ -37,19 +37,22 @@ want to modify:
 
 ## Dependencies
 
-Stuge depends on:
+Stuge obviously requires a C compiler.
 
-* A C compiler.
-* [**raylib**](https://www.raylib.com/).
+You also need [`raylib`](https://www.raylib.com/), which is the base library
+that powers the engine.
 
-### On Linux/Ubuntu
+These are also other engine dependencies:
+
+### On Linux
 
 ```bash
 liblua5.3-dev libxml2-dev libglfw3-dev libglfw3 libasound2-dev mesa-common-dev
 libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
 ```
 
-They can be installed with `apt install`.
+They can be installed with `apt install` on Ubuntu (in other distros they may have
+other names).
 
 ### Asset Dependencies
 

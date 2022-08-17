@@ -61,6 +61,8 @@ typedef struct {
 
 extern Game gGame;
 
+void InitGame(void);
+
 void ChangeState(GameState new_state);
 void ChangeToPrevState(void);
 

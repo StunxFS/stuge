@@ -3,20 +3,9 @@
 
 #include <raylib.h>
 
-#define RAYGUI_IMPLEMENTATION
-#include "raygui/raygui.h"
-#include "raygui/styles/cyber/cyber.h"
-#undef RAYGUI_IMPLEMENTATION
-
 #include "config.h"
 
 #include "game.h"
-#include "hud.h"
-#include "lang.h"
-#include "graphic.h"
-#include "map.h"
-#include "player.h"
-#include "script.h"
 #include "utils.h"
 
 #include "menus/main_menu.h"
@@ -31,38 +20,10 @@ int main(void) {
     tmx_img_load_func = TMX_TextureLoader;
     tmx_img_free_func = TMX_FreeTexture;
 
-    gGame = (Game){
-        .frames = 0,
-        .delta_time = 0,
-        .state = 0,
-        .lang = 0,
-        .map_idx = -1,
-        .lua_state = NewLuaState(),
-        .tmx_resman = tmx_make_resource_manager(),
-        .player = {
-            .look = OWL_Down,
-            .pos = { GAME_DEFAULT_WIDTH / 2, GAME_DEFAULT_HEIGHT / 2 }
-        }
-    };
-
-    GuiLoadStyleCyber();
-
-    gGame.main_camera = (Camera2D){
-        .target = (Vector2){ gGame.player.pos.x, gGame.player.pos.y },
-        .offset = (Vector2){ GAME_DEFAULT_WIDTH / 2, GAME_DEFAULT_HEIGHT / 2 },
-        .rotation = 0.0f,
-        .zoom = 1.0f
-    };
-
-    LoadLanguage();
-    LoadGraphics();
-    LoadTilesets();
-    UpdateAPIConsts(true);
-
-    LoadMap(0);
+    InitGame();
 
     gGame.state = GS_COPYRIGHT;
-    while (!WindowShouldClose() && !gGame.exit) {
+    while (!(WindowShouldClose() || gGame.exit)) {
         // --------------= update =--------------
         gGame.frames++;
         gGame.delta_time = GetFrameTime();
@@ -115,8 +76,8 @@ int main(void) {
             case GS_COPYRIGHT: {
                 ClearBackground(BLACK);
                 DrawText(
-                    "(C) 2022 StunxFS. All rights reserved.", gGame.screen_size.height - 329,
-                    gGame.screen_size.height - 290, 20, LIGHTGRAY
+                    GAME_COPYRIGHT, gGame.screen_size.height / 2, gGame.screen_size.height / 2,
+                    20, LIGHTGRAY
                 );
             }; break;
 
@@ -143,8 +104,8 @@ int main(void) {
         EndDrawing();
         // --------------------------------------
     }
-
     Cleanup();
+
     CloseWindow();
     return 0;
 }

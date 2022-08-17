@@ -2,6 +2,11 @@
 
 # Stuge
 
+![CI](https://github.com/StunxFS/stuge/actions/workflows/build.yml/badge.svg)
+![License](https://img.shields.io/github/license/StunxFS/stuge?style=flat-square)
+![Issues](https://img.shields.io/github/issues/StunxFS/stuge?style=flat-square)
+![Stars](https://img.shields.io/github/stars/StunxFS/stuge?style=flat-square)
+
 </div>
 
 Stuge (**Stu**nxFS's **G**ame **E**ngine) is a 2D top-down game
@@ -11,7 +16,7 @@ engine (for GTA-style games) developed in C, using
 The goal of the project is to have a base on which to develop a
 2D top-down game easily.
 
-> **Important note**: The engine is not ready for production yet.
+**Important note**: The engine is not ready for production yet.
 
 ## Structure
 
@@ -19,17 +24,16 @@ Stuge is arranged in a way that makes it easy to know what you
 want to modify:
 
 * `assets/`: The assets used by the project are housed in this
-    folder, such as language files, maps, scripts, graphics, sprites,
-    etc. These are embedded in the binary.
+    folder, such as language files, maps, scripts, graphics, etc.
+    These are embedded in the binary.
+
+* `bin/`: The compiled binary will appear in this folder.
 
 * `src/`: The engine code, the heart of Stuge.
 
+* `thirdparty/`: Third-party libraries that are useful for development.
+
 * `tools/`: Useful scripts that can be used to make development easier.
-
-## Using Stuge for my own game
-
-Simply modify the assets, and the engine code if necessary, to create
-your own game.
 
 ## Dependencies
 
@@ -50,11 +54,11 @@ They can be installed with `apt install`.
 ### Asset Dependencies
 
 [Tiled](http://mapeditor.org) is used for maps and tilesets. For graphics, scripts,
-langs and sounds you can use any editor of your choice.
+langs, sounds and musics you can use any editor of your choice.
 
 ## Building
 
-Just run `python3 tools/make.py`, or from **Sted**, just click the `Build` button.
+Just run `python3 tools/make.py`.
 
 ## Credits
 

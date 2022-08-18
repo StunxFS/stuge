@@ -118,6 +118,16 @@ void LoadConfig(void) {
     }
 }
 
+void SaveConfig(void) {
+    FILE* fp = fopen(
+        TextJoin((const char*[]){ gGame.dir, "config.toml" }, 2, PATH_SEPARATOR), "w"
+    );
+    fputs("# Configuration file for `" GAME_COMPANY_NAME "." GAME_NAME "`\n\n", fp);
+    fputs("[general]\n", fp);
+    fprintf(fp, "lang = %d\n", gGame.config.lang);
+    fclose(fp);
+}
+
 void MakeGameDirectory(void) {
     if (!DirectoryExists(gGame.company_dir)) {
         #if _WIN32
@@ -155,13 +165,7 @@ void MakeGameDirectory(void) {
         return;
     }
 
-    FILE* fp = fopen(
-        TextJoin((const char*[]){ gGame.dir, "config.toml" }, 2, PATH_SEPARATOR), "w"
-    );
-    fputs("# Configuration file for `" GAME_COMPANY_NAME "." GAME_NAME "`\n\n", fp);
-    fputs("[general]\n", fp);
-    fprintf(fp, "lang = %d\n", gGame.config.lang);
-    fclose(fp);
+    SaveConfig();
 
     const char* save_dir = TextJoin(
         (const char*[]){ gGame.dir, "saves" }, 2, PATH_SEPARATOR

@@ -75,6 +75,7 @@ void ChangeState(GameState new_state);
 void ChangeToPrevState(void);
 
 void LoadConfig(void);
+void SaveConfig(void);
 void MakeGameDirectory(void);
 
 void Cleanup(void);

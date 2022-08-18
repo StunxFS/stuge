@@ -110,11 +110,12 @@ void LoadConfig(void) {
 
         toml_free(config);
     } else {
-        // Use default values
         MakeGameDirectory();
+        // Use default values
         gGame.config = (GameConfig){
             .lang = GAME_DEFAULT_LANG
         };
+        SaveConfig();
     }
 }
 
@@ -122,7 +123,7 @@ void SaveConfig(void) {
     FILE* fp = fopen(
         TextJoin((const char*[]){ gGame.dir, "config.toml" }, 2, PATH_SEPARATOR), "w"
     );
-    fputs("# Configuration file for `" GAME_COMPANY_NAME "." GAME_NAME "`\n\n", fp);
+    fputs("# Configuration file for `" GAME_QUALNAME "`\n\n", fp);
     fputs("[general]\n", fp);
     fprintf(fp, "lang = %d\n", gGame.config.lang);
     fclose(fp);
@@ -164,8 +165,6 @@ void MakeGameDirectory(void) {
         RuntimeError(TextFormat("MakeGameDirectory(): chmod error: %s", strerror(errno)));
         return;
     }
-
-    SaveConfig();
 
     const char* save_dir = TextJoin(
         (const char*[]){ gGame.dir, "saves" }, 2, PATH_SEPARATOR

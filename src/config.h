@@ -7,6 +7,8 @@
 #define GAME_NAME "stuge"
 #define GAME_VERSION "0.1.0"
 #define GAME_COMPANY_NAME "StunxFS"
+#define GAME_QUALNAME GAME_COMPANY_NAME "." GAME_NAME
+
 #define GAME_COPYRIGHT "(C) 2022 " GAME_COMPANY_NAME ". All rights reserved."
 
 #define GAME_DEFAULT_WIDTH 870

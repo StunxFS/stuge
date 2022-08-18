@@ -16,7 +16,7 @@ void RuntimeError(const char* msg) {
         gGame.state = GS_RUNTIME_ERROR;
         gGame.error = msg;
     } else {
-        fprintf(stderr, "[" GAME_COMPANY_NAME "." GAME_NAME "] Runtime Error: %s\n", msg);
+        fprintf(stderr, "[" GAME_QUALNAME "] Runtime Error: %s\n", msg);
         Cleanup();
         exit(1);
     }

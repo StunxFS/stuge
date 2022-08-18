@@ -22,8 +22,8 @@ const char* _(const char* key) {
 }
 
 void LoadLanguage(void) {
-    char errbuf[200];
-    switch (gGame.lang) {
+    static char errbuf[200];
+    switch (gGame.config.lang) {
         case GL_English: {
             gGame.lang_txt = toml_parse(&LANGS_ENGLISH[0], errbuf, sizeof(errbuf));
         }; break;

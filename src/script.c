@@ -62,7 +62,7 @@ void UpdateAPIConsts(bool first_time) {
     }
 
     // We register the current game language in use
-    lua_pushinteger(gGame.lua_state, gGame.lang);
+    lua_pushinteger(gGame.lua_state, gGame.config.lang);
     lua_setglobal(gGame.lua_state, "GAME_LANG");
 }
 

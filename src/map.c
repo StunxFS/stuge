@@ -54,7 +54,7 @@ void LoadMap(size_t idx) {
     if (idx < 0 || idx >= ARR_LEN(MAPS_TABLE)) {
         RuntimeError(TextFormat("cannot load map: index out of range (idx: %d)", idx));
     }
-    if (gGame.map_idx != idx) {
+    if (gGame.map == NULL || gGame.map_idx != idx) {
         gGame.map_idx = idx;
         gGame.map = &MAPS_TABLE[idx];
         if (gGame.map->tmx_map == NULL) {
@@ -62,9 +62,12 @@ void LoadMap(size_t idx) {
                 gGame.tmx_resman, gGame.map->buf, gGame.map->size
             );
             if (!gGame.map->tmx_map) {
-                RuntimeError(TextFormat("cannot load map %d", idx));
+                RuntimeError(TextFormat("cannot load map #%d", idx));
             }
         }
+    }
+    if (gGame.map == NULL) {
+        RuntimeError(TextFormat("cannot load map #%d (null value)", idx));
     }
 }
 

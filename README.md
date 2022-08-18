@@ -63,12 +63,13 @@ langs, sounds and musics you can use any editor of your choice.
 
 Just run `python3 tools/make.py`.
 
-## Credits
+## Acknowledgments
 
 * [raysan5](https://github.com/raysan5) by **raylib** and **raygui**.
 * [cktan](https://github.com/cktan) by **tomlc99**.
 * [baylej](https://github.com/baylej) by **tmx**.
 * [RobLoach](https://github.com/RobLoach) by **raylib-tmx**.
+* [DaveGamble](https://github.com/DaveGamble) by **cJSON**.
 
 * * *
 

@@ -25,7 +25,7 @@ void OptionsMenu_Draw(void) {
     gGame.changed_language = GuiDropdownBox(
         (Rectangle){TextLength(game_lang) + 170, 120, 200, 33},
         TextJoin(&LANGUAGE_OPTIONS[0], ARR_LEN(LANGUAGE_OPTIONS), ";"),
-        (int*)&gGame.lang, true
+        (int*)&gGame.config.lang, true
     );
 
     if (GuiButton((Rectangle){30, gGame.screen_size.height - 60, 200, 33}, _("Back"))) {

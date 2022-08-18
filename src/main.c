@@ -6,6 +6,8 @@
 #include "config.h"
 
 #include "game.h"
+#include "hud.h"
+#include "script.h"
 #include "utils.h"
 
 #include "menus/main_menu.h"
@@ -76,8 +78,8 @@ int main(void) {
             case GS_COPYRIGHT: {
                 ClearBackground(BLACK);
                 DrawText(
-                    GAME_COPYRIGHT, gGame.screen_size.height / 2, gGame.screen_size.height / 2,
-                    20, LIGHTGRAY
+                    GAME_COPYRIGHT, (gGame.screen_size.height / 2) - 12,
+                    (gGame.screen_size.height / 2) - 14, 20, LIGHTGRAY
                 );
             }; break;
 

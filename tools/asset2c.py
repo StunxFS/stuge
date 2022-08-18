@@ -8,12 +8,7 @@ import os, sys, glob
 import utils
 
 
-def read_cc():
-    with open("Makefile", "r") as f:
-        return f.read().splitlines()[0][6:].strip()
-
-
-CC = read_cc()
+CC = "gcc"
 
 ASSETS = glob.glob("assets/**/*.*", recursive=True)
 

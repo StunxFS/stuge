@@ -33,17 +33,25 @@ typedef struct {
 } ScreenSize;
 
 typedef struct {
+    GameLanguage lang;
+} GameConfig;
+
+typedef struct {
     int frames;
     int delta_time;
-    ScreenSize screen_size;
-    Camera2D main_camera;
 
     bool paused;
     bool exit;
 
+    const char* company_dir;
+    const char* dir;
     const char* error;
 
-    GameLanguage lang;
+    GameConfig config;
+
+    ScreenSize screen_size;
+    Camera2D main_camera;
+
     toml_table_t* lang_txt;
     bool changed_language;
 
@@ -65,6 +73,9 @@ void InitGame(void);
 
 void ChangeState(GameState new_state);
 void ChangeToPrevState(void);
+
+void LoadConfig(void);
+void MakeGameDirectory(void);
 
 void Cleanup(void);
 

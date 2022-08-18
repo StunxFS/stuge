@@ -9,6 +9,16 @@
 #define FRAME 60
 #define FRAMES(count) ((count) * FRAME)
 
+#if _WIN32
+    #define PATH_SEPARATOR "\\"
+#else
+    #define PATH_SEPARATOR "/"
+#endif
+
 void RuntimeError(const char* msg);
+
+char* UserHomeDir(void);
+
+char* TextDup(const char* str);
 
 #endif // STUGE_UTILS_H

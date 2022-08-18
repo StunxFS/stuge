@@ -5,7 +5,7 @@
 
 int player_look(lua_State* L) {
     if (lua_gettop(L) != 1) {
-        return luaL_error(L, "expecting exactly 1 arguments");
+        return luaL_error(L, "expecting exactly 1 argument");
     }
     gGame.player.look = luaL_checkinteger(L, 1);
     return 0;

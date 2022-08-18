@@ -8,7 +8,7 @@
 
 int log_log(int level, lua_State* L) {
     if (lua_gettop(L) != 1) {
-        return luaL_error(L, "expecting exactly 1 arguments");
+        return luaL_error(L, "expecting exactly 1 argument");
     }
     TraceLog(level, luaL_checkstring(L, 1));
     return 0;
@@ -35,11 +35,11 @@ int log_fatal(lua_State* L) {
 }
 
 static const luaL_Reg lib[] = {
-    { "debug", log_debug  },
-    { "info",  log_info   },
-    { "warn",  log_warn   },
-    { "error", log_error  },
-    { "fatal", log_fatal  },
+    { "debug", log_debug },
+    { "info",  log_info  },
+    { "warn",  log_warn  },
+    { "error", log_error },
+    { "fatal", log_fatal },
     { NULL, NULL }
 };
 

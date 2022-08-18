@@ -158,7 +158,7 @@ void MakeGameDirectory(void) {
     FILE* fp = fopen(
         TextJoin((const char*[]){ gGame.dir, "config.toml" }, 2, PATH_SEPARATOR), "w"
     );
-    fprintf(fp, "# Configuration file for `%s.%s`\n\n", GAME_COMPANY_NAME, GAME_NAME);
+    fputs("# Configuration file for `" GAME_COMPANY_NAME "." GAME_NAME "`\n\n", fp);
     fputs("[general]\n", fp);
     fprintf(fp, "lang = %d\n", gGame.config.lang);
     fclose(fp);

@@ -9,5 +9,5 @@ void HUD_Update(void) {
 }
 
 void HUD_Draw(void) {
-    DrawText("Stuge [InGame]", 30, 30, 20, LIGHTGRAY);
+    DrawTextS("Stuge [InGame]", 30, 30, 20, LIGHTGRAY);
 }

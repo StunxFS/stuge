@@ -71,13 +71,13 @@ int main(void) {
         switch (gGame.state) {
             case GS_RUNTIME_ERROR: {
                 ClearBackground(BLACK);
-                DrawText("Runtime Error", 30, 30, 35, LIGHTGRAY);
-                DrawText(gGame.error, 30, 75, 20, LIGHTGRAY);
+                DrawTextS("Runtime Error", 30, 30, 35, LIGHTGRAY);
+                DrawTextS(gGame.error, 30, 75, 20, LIGHTGRAY);
             }; break;
 
             case GS_COPYRIGHT: {
                 ClearBackground(BLACK);
-                DrawText(
+                DrawTextS(
                     GAME_COPYRIGHT, (gGame.screen_size.height / 2) - 12,
                     (gGame.screen_size.height / 2) - 14, 20, LIGHTGRAY
                 );

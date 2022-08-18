@@ -7,7 +7,6 @@ import os, sys, glob
 
 import utils
 
-
 CC = "gcc"
 
 ASSETS = glob.glob("assets/**/*.*", recursive=True)
@@ -23,7 +22,8 @@ for asset in ASSETS:
     if asset.endswith(".tiled-project") or asset.endswith(".tiled-session"):
         continue
 
-    final_name = os.path.splitext(asset)[0][7:].replace(os.path.sep, "_")
+    final_name = os.path.splitext(asset)[0][7:].replace("-", "_").replace(
+        os.path.sep, "_")
     final_name_h = final_name + ".h"
     final_name_header = os.path.join("src", "data", final_name_h)
     data_h.write(f'#include "{final_name_h}"\n')

@@ -18,7 +18,7 @@ void OptionsMenu_Update(void) {
 
 void OptionsMenu_Draw(void) {
     ClearBackground(BLACK);
-    DrawText(_("Options"), 30, 30, 30, LIGHTGRAY);
+    DrawTextS(_("Options"), 30, 30, 30, LIGHTGRAY);
 
     const char* game_lang = _("GameLang");
     GuiLabel((Rectangle){30, 120, 200, 33}, game_lang);

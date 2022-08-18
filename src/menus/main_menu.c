@@ -16,7 +16,7 @@ void MainMenu_Update(void) {
 void MainMenu_Draw(void) {
     ClearBackground(BLACK);
     DrawTexture(GetTexture("../graphics/backgrounds/bg_main_menu.png"), 0, 0, WHITE);
-    DrawText("Stuge", 30, 30, 40, LIGHTGRAY);
+    DrawTextS("Stuge", 30, 30, 40, LIGHTGRAY);
 
     if (GuiButton((Rectangle){30, gGame.screen_size.height - 140, 200, 33}, _("NewGame"))) {
         gGame.state = GS_INGAME;

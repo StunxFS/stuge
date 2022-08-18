@@ -35,9 +35,10 @@ void InitGame(void) {
     gGame = (Game){
         .frames = 0,
         .delta_time = 0,
+        .state = GS_INTERNAL,
+        .font = LoadFont("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"),
         .lua_state = NewLuaState(),
         .tmx_resman = tmx_make_resource_manager(),
-        .state = GS_INTERNAL,
         .company_dir = TextDup(TextJoin(
             (const char*[]){ home_dir, "." GAME_COMPANY_NAME }, 2, PATH_SEPARATOR
         )),
@@ -187,6 +188,18 @@ void MakeGameDirectory(void) {
     if (r == -1) {
         RuntimeError(TextFormat("MakeGameDirectory(): chmod error: %s", strerror(errno)));
         return;
+    }
+}
+
+// Draw text (using game font)
+void DrawTextS(const char *text, int posX, int posY, int fontSize, Color color) {
+    if (gGame.font.texture.id != 0) {
+        Vector2 position = { (float)posX, (float)posY };
+        if (fontSize < GAME_DEFAULT_FONT_SIZE) {
+            fontSize = GAME_DEFAULT_FONT_SIZE;
+        }
+        int spacing = fontSize / GAME_DEFAULT_FONT_SIZE;
+        DrawTextEx(gGame.font, text, position, (float)fontSize, (float)spacing, color);
     }
 }
 

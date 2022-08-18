@@ -17,4 +17,6 @@
 #define GAME_DEFAULT_LANG GL_English
 #define GAME_DEFAULT_START_MAP 0
 
+#define GAME_DEFAULT_FONT_SIZE 16
+
 #endif // STUGE_CONFIG_H

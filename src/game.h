@@ -52,6 +52,8 @@ typedef struct {
     ScreenSize screen_size;
     Camera2D main_camera;
 
+    Font font;
+
     toml_table_t* lang_txt;
     bool changed_language;
 
@@ -77,6 +79,8 @@ void ChangeToPrevState(void);
 void LoadConfig(void);
 void SaveConfig(void);
 void MakeGameDirectory(void);
+
+void DrawTextS(const char *text, int posX, int posY, int fontSize, Color color);
 
 void Cleanup(void);
 

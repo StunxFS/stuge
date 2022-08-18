@@ -142,36 +142,36 @@ void MakeGameDirectory(void) {
 
     #if _WIN32
         int r = _mkdir(gGame.dir);
-	#else
+    #else
         int r = mkdir(gGame.dir, 0777);
-	#endif
-	if (r == -1) {
+    #endif
+    if (r == -1) {
         RuntimeError(TextFormat("MakeGameDirectory(): %s", strerror(errno)));
         return;
-	}
-	r = chmod(gGame.dir, 0777);
-	if (r == -1) {
+    }
+    r = chmod(gGame.dir, 0777);
+    if (r == -1) {
         RuntimeError(TextFormat("MakeGameDirectory(): chmod error: %s", strerror(errno)));
         return;
-	}
+    }
 
-	FILE* fp = fopen(
+    FILE* fp = fopen(
         TextJoin((const char*[]){ gGame.dir, "config.toml" }, 2, PATH_SEPARATOR), "w"
-	);
-	fprintf(fp, "# Configuration file for `%s.%s`\n\n", GAME_COMPANY_NAME, GAME_NAME);
-	fputs("[general]\n", fp);
-	fprintf(fp, "lang = %d\n", gGame.config.lang);
+    );
+    fprintf(fp, "# Configuration file for `%s.%s`\n\n", GAME_COMPANY_NAME, GAME_NAME);
+    fputs("[general]\n", fp);
+    fprintf(fp, "lang = %d\n", gGame.config.lang);
     fclose(fp);
 
-	const char* save_dir = TextJoin(
+    const char* save_dir = TextJoin(
         (const char*[]){ gGame.dir, "saves" }, 2, PATH_SEPARATOR
-	);
+    );
     #if _WIN32
         r = _mkdir(save_dir);
-	#else
+    #else
         r = mkdir(save_dir, 0777);
-	#endif
-	if (r == -1) {
+    #endif
+    if (r == -1) {
         RuntimeError(
             TextFormat(
                 "MakeGameDirectory(): error making '%s' directory: %s", save_dir,
@@ -179,12 +179,12 @@ void MakeGameDirectory(void) {
             )
         );
         return;
-	}
-	r = chmod(save_dir, 0777);
-	if (r == -1) {
+    }
+    r = chmod(save_dir, 0777);
+    if (r == -1) {
         RuntimeError(TextFormat("MakeGameDirectory(): chmod error: %s", strerror(errno)));
         return;
-	}
+    }
 }
 
 void Cleanup(void) {

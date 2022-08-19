@@ -9,8 +9,8 @@
 #include <lua.h>
 #include <raylib.h>
 
-#include "toml/toml.h"
-#include "tmx/tmx.h"
+#include "../thirdparty/toml/toml.h"
+#include "../thirdparty/tmx/tmx.h"
 
 #include "lang.h"
 #include "map.h"

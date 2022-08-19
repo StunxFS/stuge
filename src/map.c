@@ -6,8 +6,8 @@
 #include <raylib.h>
 
 #define RAYLIB_TMX_IMPLEMENTATION
-#include "tmx/tmx.h"
-#include "tmx/raylib-tmx.h"
+#include "../thirdparty/tmx/tmx.h"
+#include "../thirdparty/tmx/raylib-tmx.h"
 #undef RAYLIB_TMX_IMPLEMENTATION
 
 #include "game.h"

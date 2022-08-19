@@ -18,8 +18,7 @@ CFILES.sort()
 OBJS = [cfile.replace(".c", ".o") for cfile in CFILES]
 OBJS_LIST = ' '.join([obj for obj in OBJS])
 
-INCS = " ".join(
-    ["-I/usr/include/libxml2", "-I/usr/include/lua5.3", "-Ithirdparty/"])
+INCS = " ".join(["-I/usr/include/libxml2", "-I/usr/include/lua5.3"])
 LINKS = " ".join(
     ["-lxml2", "-llua5.3", "-lglfw", "-lrt", "-lm", "-ldl", "-pthread"])
 
@@ -44,7 +43,8 @@ if NOT_EXISTS_MAKEFILE or ASSETS_MODIFIED or SRC_MODIFIED or THIRDPARTY_MODIFIED
             mf.write("generate_asset_headers:\n")
             mf.write("	python3 tools/asset2c.py\n")
             mf.write("\n")
-            mf.write(f"build: generate_asset_headers {USE_CLEAN} {OBJS_LIST}\n")
+            mf.write(
+                f"build: generate_asset_headers {USE_CLEAN} {OBJS_LIST}\n")
         else:
             mf.write(f"build: {OBJS_LIST}\n")
         mf.write(

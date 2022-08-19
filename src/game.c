@@ -13,8 +13,8 @@
 
 // TODO: remove dependency on raygui, and implement own GUI
 #define RAYGUI_IMPLEMENTATION
-#include "raygui/raygui.h"
-#include "raygui/styles/cyber/cyber.h"
+#include "../thirdparty/raygui/raygui.h"
+#include "../thirdparty/raygui/styles/cyber/cyber.h"
 #undef RAYGUI_IMPLEMENTATION
 
 #include "config.h"

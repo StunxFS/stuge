@@ -1,7 +1,7 @@
 // (C) 2022 StunxFS. All rights reserved. Use of this source code is
 // governed by an MIT license that can be found in the LICENSE file.
 
-#include "toml/toml.h"
+#include "../thirdparty/toml/toml.h"
 
 #include "game.h"
 #include "lang.h"

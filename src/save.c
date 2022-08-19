@@ -3,7 +3,7 @@
 
 #include <raylib.h>
 
-#include "cJSON/cJSON.h"
+#include "../thirdparty/cJSON/cJSON.h"
 
 #include "config.h"
 #include "game.h"
@@ -25,8 +25,8 @@ void Load_SaveFile(int idx) {
 
     cJSON* save = cJSON_Parse(sf_content);
     if (save == NULL) {
-        RuntimeError(TextFormat("cannot parse save file #%d:\n%s", idx, cJSON_GetErrorPtr()));
         UnloadFileText(sf_content);
+        RuntimeError(TextFormat("cannot parse save file #%d:\n%s", idx, cJSON_GetErrorPtr()));
         return;
     }
 

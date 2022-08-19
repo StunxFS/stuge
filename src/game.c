@@ -45,6 +45,10 @@ void InitGame(void) {
         .company_dir = TextDup(TextJoin(
             (const char*[]){ home_dir, "." GAME_COMPANY_NAME }, 2, PATH_SEPARATOR
         )),
+        .saves_dir = TextDup(TextJoin(
+            (const char*[]){ home_dir, "." GAME_COMPANY_NAME, GAME_NAME, "saves" }, 3,
+            PATH_SEPARATOR
+        ))
         .dir = TextDup(TextJoin(
             (const char*[]){ home_dir, "." GAME_COMPANY_NAME, GAME_NAME }, 3,
             PATH_SEPARATOR
@@ -206,6 +210,9 @@ void DrawTextS(const char *text, int posX, int posY, int fontSize, Color color) 
 void Cleanup(void) {
     if (gGame.company_dir != NULL) {
         free((void*)gGame.company_dir);
+    }
+    if (gGame.saves_dir != NULL) {
+        free((void*)gGame.saves_dir);
     }
     if (gGame.dir != NULL) {
         free((void*)gGame.dir);

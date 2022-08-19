@@ -44,6 +44,7 @@ typedef struct {
     bool exit;
 
     const char* company_dir;
+    const char* saves_dir;
     const char* dir;
     const char* error;
 

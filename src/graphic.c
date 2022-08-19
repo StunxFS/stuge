@@ -12,7 +12,7 @@
 void LoadGraphics(void) {
     for (size_t i = 0; i < ARR_LEN(GRAPHICS_TABLE); i++) {
         StugeGraphic* im = &GRAPHICS_TABLE[i];
-        im->image = LoadImageFromMemory(".png", (const unsigned char*)im->buf, im->size);
+        im->image = LoadImageFromMemory(im->ext, (const unsigned char*)im->buf, im->size);
         im->texture = LoadTextureFromImage(im->image);
     }
 }

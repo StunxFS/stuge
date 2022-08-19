@@ -9,10 +9,15 @@
 #include "../lang.h"
 #include "../utils.h"
 
+bool OM_back;
+
 void OptionsMenu_Update(void) {
     if (gGame.changed_language) {
         LoadLanguage();
         gGame.changed_language = false;
+    } else if (OM_back) {
+        SaveConfig();
+        ChangeToPrevState();
     }
 }
 
@@ -28,8 +33,5 @@ void OptionsMenu_Draw(void) {
         (int*)&gGame.config.lang, true
     );
 
-    if (GuiButton((Rectangle){30, gGame.screen_size.height - 60, 200, 33}, _("Back"))) {
-        SaveConfig();
-        ChangeToPrevState();
-    }
+    OM_back = GuiButton((Rectangle){30, gGame.screen_size.height - 60, 200, 33}, _("Back"));
 }

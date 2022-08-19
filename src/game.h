@@ -37,18 +37,20 @@ typedef struct {
 } GameConfig;
 
 typedef struct {
+    const char* company_dir;
+    const char* saves_dir;
+    const char* dir;
+    const char* error;
+
     int frames;
     int delta_time;
 
     bool paused;
     bool exit;
 
-    const char* company_dir;
-    const char* saves_dir;
-    const char* dir;
-    const char* error;
-
     GameConfig config;
+
+    FilePathList saves;
 
     ScreenSize screen_size;
     Camera2D main_camera;
@@ -73,6 +75,8 @@ typedef struct {
 extern Game gGame;
 
 void InitGame(void);
+
+void NewGame(void);
 
 void ChangeState(GameState new_state);
 void ChangeToPrevState(void);

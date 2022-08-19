@@ -19,10 +19,9 @@
 
 #include "config.h"
 #include "game.h"
-#include "lang.h"
 #include "graphic.h"
+#include "lang.h"
 #include "map.h"
-#include "player.h"
 #include "script.h"
 #include "utils.h"
 
@@ -46,32 +45,31 @@ void InitGame(void) {
             (const char*[]){ home_dir, "." GAME_COMPANY_NAME }, 2, PATH_SEPARATOR
         )),
         .saves_dir = TextDup(TextJoin(
-            (const char*[]){ home_dir, "." GAME_COMPANY_NAME, GAME_NAME, "saves" }, 3,
+            (const char*[]){ home_dir, "." GAME_COMPANY_NAME, GAME_NAME, "saves" }, 4,
             PATH_SEPARATOR
-        ))
+        )),
         .dir = TextDup(TextJoin(
             (const char*[]){ home_dir, "." GAME_COMPANY_NAME, GAME_NAME }, 3,
             PATH_SEPARATOR
-        ))
+        )),
+        .main_camera = (Camera2D){
+            .target = (Vector2){ GAME_DEFAULT_WIDTH / 2, GAME_DEFAULT_HEIGHT / 2 },
+            .offset = (Vector2){ GAME_DEFAULT_WIDTH / 2, GAME_DEFAULT_HEIGHT / 2 },
+            .rotation = 0.0f,
+            .zoom = 1.0f
+        }
     };
 
     LoadConfig();
+
+    gGame.saves = LoadDirectoryFilesEx(gGame.saves_dir, ".json", false);
+
     LoadLanguage();
     LoadGraphics();
     LoadTilesets();
 
-    // For saved games (~/.$(GAME_COMPANY_NAME)/$(GAME_NAME)/saves/SAVE_$(nth).json)
-    // TODO: move to a separate function: `void LoadSaveFile(int nth)`
-    gGame.map_idx = GAME_DEFAULT_START_MAP;
-    gGame.main_camera = (Camera2D){
-        .target = (Vector2){ GAME_DEFAULT_WIDTH / 2, GAME_DEFAULT_HEIGHT / 2 },
-        .offset = (Vector2){ GAME_DEFAULT_WIDTH / 2, GAME_DEFAULT_HEIGHT / 2 },
-        .rotation = 0.0f,
-        .zoom = 1.0f
-    };
+    // we load the player textures
     gGame.player = (OW){
-        .look = OWL_Down,
-        .pos = { GAME_DEFAULT_WIDTH / 2, GAME_DEFAULT_HEIGHT / 2 },
         .face_down = GRAPHICS_TABLE[2].texture,
         .face_left = GRAPHICS_TABLE[3].texture,
         .face_right = GRAPHICS_TABLE[4].texture,
@@ -81,9 +79,14 @@ void InitGame(void) {
         .face_up_left = GRAPHICS_TABLE[8].texture,
         .face_up_right = GRAPHICS_TABLE[9].texture
     };
-    LoadMap(gGame.map_idx);
 
     UpdateAPIConsts(true);
+}
+
+void NewGame(void) {
+    gGame.map_idx = GAME_DEFAULT_START_MAP;
+    gGame.player.look = OWL_Down;
+    gGame.player.pos = (Vector2){ GAME_DEFAULT_WIDTH / 2, GAME_DEFAULT_HEIGHT / 2 };
 }
 
 void ChangeState(GameState new_state) {
@@ -217,6 +220,7 @@ void Cleanup(void) {
     if (gGame.dir != NULL) {
         free((void*)gGame.dir);
     }
+    UnloadDirectoryFiles(gGame.saves);
     if (gGame.lang_txt != NULL) {
         toml_free(gGame.lang_txt);
     }

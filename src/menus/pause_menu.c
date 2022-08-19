@@ -4,8 +4,10 @@
 #include <raylib.h>
 
 #include "../game.h"
+#include "../save.h"
 
 void PauseMenu_Update(void) {
+    Save_SaveFile(0);
 }
 
 void PauseMenu_Draw(void) {

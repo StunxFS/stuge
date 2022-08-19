@@ -71,7 +71,7 @@ int main(void) {
         switch (gGame.state) {
             case GS_RUNTIME_ERROR: {
                 ClearBackground(BLACK);
-                DrawTextS("Runtime Error", 30, 30, 35, LIGHTGRAY);
+                DrawTextS("[" GAME_QUALNAME "] Runtime Error", 30, 30, 24, LIGHTGRAY);
                 DrawTextS(gGame.error, 30, 75, 20, LIGHTGRAY);
             }; break;
 

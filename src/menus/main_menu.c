@@ -8,9 +8,19 @@
 #include "../game.h"
 #include "../graphic.h"
 #include "../lang.h"
+#include "../save.h"
+
+bool MM_new_game;
+bool MM_options;
 
 void MainMenu_Update(void) {
-    // ...
+    if (MM_new_game) {
+        gGame.state = GS_INGAME;
+        NewGame();
+        LoadMap(gGame.map_idx);
+    } else if (MM_options) {
+        ChangeState(GS_OPTIONS_MENU);
+    }
 }
 
 void MainMenu_Draw(void) {
@@ -18,13 +28,7 @@ void MainMenu_Draw(void) {
     DrawTexture(GetTexture("../graphics/backgrounds/bg_main_menu.png"), 0, 0, WHITE);
     DrawTextS("Stuge", 30, 30, 40, LIGHTGRAY);
 
-    if (GuiButton((Rectangle){30, gGame.screen_size.height - 140, 200, 33}, _("NewGame"))) {
-        gGame.state = GS_INGAME;
-    }
-
-    if (GuiButton((Rectangle){30, gGame.screen_size.height - 100, 200, 33}, _("Options"))) {
-        ChangeState(GS_OPTIONS_MENU);
-    }
-
+    MM_new_game = GuiButton((Rectangle){30, gGame.screen_size.height - 140, 200, 33}, _("NewGame"));
+    MM_options = GuiButton((Rectangle){30, gGame.screen_size.height - 100, 200, 33}, _("Options"));
     gGame.exit = GuiButton((Rectangle){30, gGame.screen_size.height - 60, 200, 33}, _("Exit"));
 }

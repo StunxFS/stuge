@@ -37,7 +37,7 @@ void InitGame(void) {
         .state = GS_INTERNAL,
         .font = LoadFontFromMemory(
             ".ttf", FONTS_LIBERATIONSANS_REGULAR, FONTS_LIBERATIONSANS_REGULAR_SIZE,
-            GAME_DEFAULT_FONT_SIZE, NULL, 95
+            GAME_DEFAULT_FONT_SIZE, NULL, 681
         ),
         .lua_state = NewLuaState(),
         .tmx_resman = tmx_make_resource_manager(),
@@ -85,7 +85,7 @@ void InitGame(void) {
 
 void NewGame(void) {
     gGame.map_idx = GAME_DEFAULT_START_MAP;
-    gGame.player.look = OWL_Down;
+    gGame.player.look = OWL_Up;
     gGame.player.pos = (Vector2){ GAME_DEFAULT_WIDTH / 2, GAME_DEFAULT_HEIGHT / 2 };
 }
 

@@ -17,7 +17,6 @@ void MainMenu_Update(void) {
     if (MM_new_game) {
         gGame.state = GS_INGAME;
         NewGame();
-        LoadMap(gGame.map_idx);
     } else if (MM_options) {
         ChangeState(GS_OPTIONS_MENU);
     }

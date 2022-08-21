@@ -43,6 +43,8 @@ void Load_SaveFile(int idx) {
 
     cJSON_Delete(save);
     UnloadFileText(sf_content);
+
+    LoadMap(gGame.map_idx);
 }
 
 void Save_SaveFile(int idx) {

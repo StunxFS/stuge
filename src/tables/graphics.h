@@ -4,8 +4,6 @@
 #ifndef STUGE_GRAPHIC_TABLE_H
 #define STUGE_GRAPHIC_TABLE_H
 
-#include <stddef.h>
-
 #include <raylib.h>
 
 #include "../data/data.h"
@@ -14,7 +12,7 @@ typedef struct {
     char* filename;
     char* ext;
     char* buf;
-    size_t size;
+    int size;
     Image image;
     Texture2D texture;
 } StugeGraphic;

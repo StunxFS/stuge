@@ -4,14 +4,12 @@
 #ifndef STUGE_TILESETS_TABLE_H
 #define STUGE_TILESETS_TABLE_H
 
-#include <stdint.h>
-
 #include "../data/data.h"
 
 typedef struct {
     char* name;
     char* buf;
-    size_t size;
+    int size;
 } Tileset;
 
 static Tileset TILESETS_TABLE[] = {

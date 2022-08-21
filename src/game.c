@@ -67,6 +67,7 @@ void InitGame(void) {
     LoadLanguage();
     LoadGraphics();
     LoadTilesets();
+    UpdateAPIConsts(true);
 
     // we load the player textures
     gGame.player = (OW){
@@ -79,14 +80,13 @@ void InitGame(void) {
         .face_up_left = GRAPHICS_TABLE[8].texture,
         .face_up_right = GRAPHICS_TABLE[9].texture
     };
-
-    UpdateAPIConsts(true);
 }
 
 void NewGame(void) {
     gGame.map_idx = GAME_DEFAULT_START_MAP;
     gGame.player.look = OWL_Up;
     gGame.player.pos = (Vector2){ GAME_DEFAULT_WIDTH / 2, GAME_DEFAULT_HEIGHT / 2 };
+    LoadMap(gGame.map_idx);
 }
 
 void ChangeState(GameState new_state) {

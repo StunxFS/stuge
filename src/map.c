@@ -40,7 +40,7 @@ void TMX_FreeTexture(void* ptr) {
 
 void LoadTilesets(void) {
     set_alloc_functions();
-    for (size_t i = 0; i < ARR_LEN(TILESETS_TABLE); i++) {
+    for (int i = 0; i < ARR_LEN(TILESETS_TABLE); i++) {
         Tileset* tsx = &TILESETS_TABLE[i];
         if (!tmx_load_tileset_buffer(gGame.tmx_resman, tsx->buf, tsx->size, tsx->name)) {
             RuntimeError(
@@ -50,7 +50,7 @@ void LoadTilesets(void) {
     }
 }
 
-void LoadMap(size_t idx) {
+void LoadMap(int idx) {
     if (idx < 0 || idx >= ARR_LEN(MAPS_TABLE)) {
         RuntimeError(TextFormat("cannot load map: index out of range (idx: %d)", idx));
     }

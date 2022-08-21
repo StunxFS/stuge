@@ -4,13 +4,11 @@
 #ifndef STUGE_SCRIPT_TABLE_H
 #define STUGE_SCRIPT_TABLE_H
 
-#include <stdint.h>
-
 #include "../data/data.h"
 
 typedef struct {
     char* buf;
-    size_t size;
+    int size;
 } Script;
 
 static Script SCRIPTS_TABLE[] = {

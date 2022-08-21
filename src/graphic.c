@@ -15,6 +15,19 @@ void LoadGraphics(void) {
         im->image = LoadImageFromMemory(im->ext, (const unsigned char*)im->buf, im->size);
         im->texture = LoadTextureFromImage(im->image);
     }
+
+    // we load the player textures
+    // TODO: For some reason if this is in `InitGame()` it doesn't work as it should
+    gGame.player = (OW){
+        .face_down = GRAPHICS_TABLE[2].texture,
+        .face_left = GRAPHICS_TABLE[3].texture,
+        .face_right = GRAPHICS_TABLE[4].texture,
+        .face_up = GRAPHICS_TABLE[5].texture,
+        .face_down_left = GRAPHICS_TABLE[6].texture,
+        .face_down_right = GRAPHICS_TABLE[7].texture,
+        .face_up_left = GRAPHICS_TABLE[8].texture,
+        .face_up_right = GRAPHICS_TABLE[9].texture
+    };
 }
 
 static StugeGraphic* GetStugeGraphic(const char* filename) {

@@ -68,18 +68,6 @@ void InitGame(void) {
     LoadGraphics();
     LoadTilesets();
     UpdateAPIConsts(true);
-
-    // we load the player textures
-    gGame.player = (OW){
-        .face_down = GRAPHICS_TABLE[2].texture,
-        .face_left = GRAPHICS_TABLE[3].texture,
-        .face_right = GRAPHICS_TABLE[4].texture,
-        .face_up = GRAPHICS_TABLE[5].texture,
-        .face_down_left = GRAPHICS_TABLE[6].texture,
-        .face_down_right = GRAPHICS_TABLE[7].texture,
-        .face_up_left = GRAPHICS_TABLE[8].texture,
-        .face_up_right = GRAPHICS_TABLE[9].texture
-    };
 }
 
 void NewGame(void) {

@@ -32,6 +32,7 @@ void Load_SaveFile(int idx) {
 
     cJSON* map = cJSON_GetObjectItem(save, "map");
     gGame.map_idx = cJSON_GetNumberValue(cJSON_GetObjectItem(map, "idx"));
+    bool script_executed = cJSON_GetNumberValue(cJSON_GetObjectItem(map, "script_executed"));
 
     cJSON* player = cJSON_GetObjectItem(save, "player");
     gGame.player.look = cJSON_GetNumberValue(cJSON_GetObjectItem(player, "look"));
@@ -45,6 +46,9 @@ void Load_SaveFile(int idx) {
     UnloadFileText(sf_content);
 
     LoadMap(gGame.map_idx);
+    if (gGame.map != NULL) {
+        gGame.map->script_executed = script_executed;
+    }
 }
 
 void Save_SaveFile(int idx) {
@@ -57,7 +61,8 @@ void Save_SaveFile(int idx) {
     FILE* fp = fopen(save_file, "w");
     fputs("{\n", fp);
     fputs("    \"map\": {\n", fp);
-    fprintf(fp, "        \"idx\": %ld\n", gGame.map_idx);
+    fprintf(fp, "        \"idx\": %d,\n", gGame.map_idx);
+    fprintf(fp, "        \"script_executed\": %d\n", gGame.map->script_executed);
     fputs("    },\n", fp);
     fputs("    \"player\": {\n", fp);
     fprintf(fp, "        \"look\": %d,\n", gGame.player.look);

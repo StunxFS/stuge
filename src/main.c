@@ -34,7 +34,7 @@ int main(void) {
         switch (gGame.state) {
             case GS_COPYRIGHT: {
                 if (gGame.frames > FRAME) {
-                    // 1 second (60f) later we go to the main menu
+                    // 1 second later we go to the main menu
                     gGame.state = GS_MAIN_MENU;
                 }
             }; break;

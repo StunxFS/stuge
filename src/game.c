@@ -202,11 +202,11 @@ void MakeGameDirectory(void) {
 }
 
 // Draw text (using game font)
-void DrawTextS(const char *text, int posX, int posY, int fontSize, Color color) {
+void DrawTextS(const char *text, int pos_x, int pos_y, int font_size, Color color) {
     if (gGame.font.texture.id != 0) {
-        Vector2 position = { (float)posX, (float)posY };
-        int spacing = fontSize / GAME_DEFAULT_FONT_SIZE;
-        DrawTextEx(gGame.font, text, position, (float)fontSize, (float)spacing, color);
+        Vector2 position = { (float)pos_x, (float)pos_y };
+        int spacing = font_size / GAME_DEFAULT_FONT_SIZE;
+        DrawTextEx(gGame.font, text, position, (float)font_size, (float)spacing, color);
     }
 }
 

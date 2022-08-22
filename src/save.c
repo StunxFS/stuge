@@ -59,18 +59,22 @@ void Save_SaveFile(int idx) {
         (const char*[]){ gGame.saves_dir, TextFormat("SAVE_%d.json", idx) }, 2, PATH_SEPARATOR
     );
     FILE* fp = fopen(save_file, "w");
-    fputs("{\n", fp);
-    fputs("    \"map\": {\n", fp);
-    fprintf(fp, "        \"idx\": %d,\n", gGame.map_idx);
-    fprintf(fp, "        \"script_executed\": %d\n", gGame.map->script_executed);
-    fputs("    },\n", fp);
-    fputs("    \"player\": {\n", fp);
-    fprintf(fp, "        \"look\": %d,\n", gGame.player.look);
-    fputs("        \"pos\": {\n", fp);
-    fprintf(fp, "            \"x\": %f,\n", gGame.player.pos.x);
-    fprintf(fp, "            \"y\": %f\n", gGame.player.pos.y);
-    fputs("        },\n", fp);
-    fputs("    },\n", fp);
-    fputs("}\n", fp);
+    fprintf(fp,
+        "{\n"
+        "    \"map\": {\n"
+        "        \"idx\": %d,\n"
+        "        \"script_executed\": %d\n"
+        "    },\n"
+        "    \"player\": {\n"
+        "        \"look\": %d,\n"
+        "        \"pos\": {\n"
+        "            \"x\": %f,\n"
+        "            \"y\": %f\n"
+        "        },\n"
+        "    },\n"
+        "}\n",
+        gGame.map_idx, gGame.map->script_executed,
+        gGame.player.look, gGame.player.pos.x, gGame.player.pos.y
+    );
     fclose(fp);
 }

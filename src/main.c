@@ -70,8 +70,9 @@ int main(void) {
         BeginDrawing();
         switch (gGame.state) {
             case GS_RUNTIME_ERROR: {
+                ShowCursor();
                 ClearBackground(BLACK);
-                DrawTextS("[" GAME_QUALNAME "] Runtime Error", 30, 30, 24, LIGHTGRAY);
+                DrawTextS("[" GAME_QUALNAME "] Runtime Error", 30, 30, 22, LIGHTGRAY);
                 DrawTextS(gGame.error, 30, 75, 20, LIGHTGRAY);
             }; break;
 

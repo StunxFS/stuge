@@ -54,6 +54,17 @@ void UpdateAPIConsts(bool first_time) {
         lua_pushinteger(gGame.lua_state, GL_Spanish);
         lua_setglobal(gGame.lua_state, "GL_Spanish");
 
+        lua_pushinteger(gGame.lua_state, SVK_NIL);
+        lua_setglobal(gGame.lua_state, "SVK_NIL");
+        lua_pushinteger(gGame.lua_state, SVK_BOOL);
+        lua_setglobal(gGame.lua_state, "SVK_BOOL");
+        lua_pushinteger(gGame.lua_state, SVK_NUMBER);
+        lua_setglobal(gGame.lua_state, "SVK_NUMBER");
+        lua_pushinteger(gGame.lua_state, SVK_INTEGER);
+        lua_setglobal(gGame.lua_state, "SVK_INTEGER");
+        lua_pushinteger(gGame.lua_state, SVK_STRING);
+        lua_setglobal(gGame.lua_state, "SVK_STRING");
+
         for (int i = 0; i < ARR_LEN(MAPS_TABLE); i++) {
             Map* map = &MAPS_TABLE[i];
             lua_pushinteger(gGame.lua_state, i);

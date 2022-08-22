@@ -9,11 +9,13 @@
 #include "stuge/stuge.h"
 
 int luaopen_log(lua_State* L);
+int luaopen_SharedValues(lua_State* L);
 
 static const luaL_Reg libs[] = {
     { "log", luaopen_log },
     { "stuge", luaopen_stuge },
     { "player", luaopen_player },
+    { "SharedValues", luaopen_SharedValues },
     { NULL, NULL }
 };
 

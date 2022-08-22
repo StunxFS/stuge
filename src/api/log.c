@@ -8,7 +8,7 @@
 
 int log_log(int level, lua_State* L) {
     if (lua_gettop(L) != 1) {
-        return luaL_error(L, "expecting exactly 1 argument");
+        return luaL_error(L, "`log` functions expect a single argument");
     }
     TraceLog(level, luaL_checkstring(L, 1));
     return 0;

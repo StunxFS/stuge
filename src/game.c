@@ -23,6 +23,7 @@
 #include "lang.h"
 #include "map.h"
 #include "script.h"
+#include "SharedValue.h"
 #include "utils.h"
 
 Game gGame;
@@ -39,6 +40,7 @@ void InitGame(void) {
             ".ttf", FONTS_LIBERATIONSANS_REGULAR, FONTS_LIBERATIONSANS_REGULAR_SIZE,
             GAME_DEFAULT_FONT_SIZE, NULL, 681
         ),
+        .shared_values = malloc(sizeof(SharedValue) * GAME_DEFAULT_MAX_SHARED_VALUES),
         .lua_state = NewLuaState(),
         .tmx_resman = tmx_make_resource_manager(),
         .company_dir = TextDup(TextJoin(
@@ -211,6 +213,9 @@ void Cleanup(void) {
     UnloadDirectoryFiles(gGame.saves);
     if (gGame.lang_txt != NULL) {
         toml_free(gGame.lang_txt);
+    }
+    if (gGame.shared_values != NULL) {
+        free((void*)gGame.shared_values);
     }
     if (gGame.lua_state != NULL) {
         lua_close(gGame.lua_state);

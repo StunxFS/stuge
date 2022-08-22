@@ -14,6 +14,7 @@
 #include "map.h"
 #include "ow.h"
 #include "player.h"
+#include "SharedValue.h"
 #include "utils.h"
 
 typedef enum {
@@ -48,16 +49,16 @@ typedef struct {
 
     GameConfig config;
 
-    FilePathList saves;
-
     ScreenSize screen_size;
     Camera2D main_camera;
-
     Font font;
+
+    FilePathList saves;
 
     toml_table_t* lang_txt;
     bool changed_language;
 
+    SharedValue* shared_values;
     lua_State* lua_state;
 
     GameState state;

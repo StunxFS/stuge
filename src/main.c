@@ -29,7 +29,10 @@ int main(void) {
         // --------------= update =--------------
         gGame.frames++;
         gGame.delta_time = GetFrameTime();
-        gGame.screen_size = (ScreenSize){GetScreenWidth(), GetScreenHeight()};
+        gGame.screen_size = (ScreenSize){
+            .width = GetScreenWidth(),
+            .height = GetScreenHeight()
+        };
         UpdateAPIConsts(false);
         switch (gGame.state) {
             case GS_COPYRIGHT: {

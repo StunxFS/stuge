@@ -4,6 +4,10 @@
 #ifndef STUGE_MAP_H
 #define STUGE_MAP_H
 
+#include "../thirdparty/vector/vector.h"
+
+#include "GameObject.h"
+
 typedef struct {
     char* name;
     char* buf;
@@ -11,6 +15,9 @@ typedef struct {
     int script_idx;
     bool script_executed;
     tmx_map* tmx_map;
+
+    bool started_gobjs;
+    Vector* game_objects;
 } Map;
 
 void* TMX_TextureLoader(const char *path);

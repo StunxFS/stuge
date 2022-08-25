@@ -37,3 +37,9 @@ char* TextDup(const char* str) {
     buf[size] = 0;
     return buf;
 }
+
+void* MemDup(const void* ptr, int size) {
+    void* buf = malloc(size);
+    memcpy(buf, ptr, size);
+    return buf;
+}

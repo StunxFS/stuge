@@ -64,9 +64,9 @@ typedef struct {
     GameState state;
     GameState prev_state;
 
+    tmx_resource_manager* tmx_resman;
     int map_idx;
     Map* map;
-    tmx_resource_manager* tmx_resman;
 
     OW player;
 } Game;

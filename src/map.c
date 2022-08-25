@@ -68,7 +68,10 @@ void LoadMap(int idx) {
     }
     if (gGame.map == NULL) {
         RuntimeError(TextFormat("cannot load map #%d (null value)", idx));
+        return;
     }
+    AwakeGameObjects();
+    StartGameObjects();
 }
 
 void Map_Update(void) {
@@ -81,6 +84,8 @@ void Map_Update(void) {
     gGame.main_camera.offset = (Vector2){
         gGame.screen_size.width / 2, gGame.screen_size.height / 2
     };
+    UpdateGameObjects();
+    LateUpdateGameObjects();
 }
 
 void Map_Draw(void) {
@@ -89,6 +94,7 @@ void Map_Draw(void) {
 
     DrawTMX(gGame.map->tmx_map, 0, 0, LIGHTGRAY);
     Player_Draw();
+    DrawGameObjects();
 
     EndMode2D();
 }

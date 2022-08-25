@@ -70,6 +70,7 @@ Just run `python3 tools/make.py`.
 * [baylej](https://github.com/baylej) by **tmx**.
 * [RobLoach](https://github.com/RobLoach) by **raylib-tmx**.
 * [DaveGamble](https://github.com/DaveGamble) by **cJSON**.
+* [goldsborough](https://github.com/goldsborough) by **vector**.
 
 * * *
 

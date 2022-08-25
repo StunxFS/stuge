@@ -201,6 +201,7 @@ void DrawTextS(const char *text, int pos_x, int pos_y, int font_size, Color colo
 }
 
 void Cleanup(void) {
+    DestroyGameObjects();
     if (gGame.company_dir != NULL) {
         free((void*)gGame.company_dir);
     }

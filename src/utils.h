@@ -20,5 +20,6 @@ void RuntimeError(const char* msg);
 char* UserHomeDir(void);
 
 char* TextDup(const char* str);
+void* MemDup(const void* ptr, int size);
 
 #endif // STUGE_UTILS_H
